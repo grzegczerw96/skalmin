@@ -46,13 +46,15 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
 - 16.10.2026 hero: film z Pexels (kamera stoi, idzie postać) zamiast renderu 3D jaskini z jadącą kamerą (decyzja
   Grzegorza: „Film z sieci (Pexels)”).
 - 16.10.2026 zdjęcia z Pexels, maszyny wycięte z tła (walec bez kabiny), skały minerałów z własnej bryły 3D.
+- 16.10.2026 hero: postać w filmie większa niż maszyna w oryginale; karta 2 = ładowarka kołowa w słońcu (w oryginale
+  górnik w kasku). Nawigacja przy wejściu stoi (tak jak żywy oryginał; tween z `ci()` nic nie przesuwa).
 - 16.10.2026 jedna strona: bez Barba i podstron; linki menu i przycisków prowadzą do sekcji tej strony albo `#`.
 
 ## Sekcje
 | NN | Sekcja | Zlecenie | Stan | Uwagi |
 |---|---|---|---|---|
 | 00 | wspólne: nawigacja, menu, przycisk, etykieta sekcji, tekst odsłaniany | `zlecenia/00-wspolne.md` | przyjęta 16.10 (0 rund poprawek) | API na górze `js/00-wspolne.js` i `css/00-wspolne.css` |
-| 01 | plansza ładowania + hero | `zlecenia/01-hero.md` | do zrobienia | |
+| 01 | plansza ładowania + hero | `zlecenia/01-hero.md` | przyjęta 16.10 (0 rund) | media odtwarza `narzedzia/hero-media.py` |
 | 02 | o nas | `zlecenia/02-onas.md` | do zrobienia | |
 | 03 | usługi | `zlecenia/03-uslugi.md` | do zrobienia | |
 | 04 | minerały | `zlecenia/04-mineraly.md` | do zrobienia | |

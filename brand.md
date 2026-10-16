@@ -31,7 +31,8 @@ wiersze na 1440, rozmiar).
   „2026 CoMinVi - Designed and developed by Holographik®” → „2026 SkalMin - Projekt i wykonanie: studium odtworzenia”
 
 ### 01 · hero
-- Your trusted partner / in underground mining → Twój zaufany partner / w górnictwie podziemnym
+- Your trusted partner / in underground mining → Twój zaufany partner / w robotach górniczych (16.10: „w górnictwie
+  podziemnym” było o 16% szersze i łamało się na 375; podagent 01)
 - Over time / + 1.000.000 linear meters → Przez lata / + 1.000.000 metrów bieżących
 - Karty: Our Services / Technology → Nasze usługi / Technologia
 
@@ -123,7 +124,7 @@ Wszystkie zdjęcia i film: Pexels (licencja Pexels: wolno używać i przerabiać
 |---|---|---|---|---|
 | 01 hero: tło (film wejścia 3,6 s + 150 klatek przewijanych, 3D jaskinia z maszyną) | jaskinia, granat, światła | `_zrodla/pexels/hero-18898292.mp4` → podagent 01 tnie na film wejścia i klatki | 18898292 (wideo, 1920×1080, 16,7 s) | ciemna jaskinia, postać z czołówką; przyciemnić i zabarwić na granat oryginału; kamera stoi (w oryginale jedzie): zapisać jako odstępstwo |
 | 01 hero: karta 1 | dwóch górników z czołówkami w tunelu | `img/hero-karta-1.webp` | 13658087 | |
-| 01 hero: karta 2 (Technologia) | maszyna | `img/hero-karta-2.webp` | 28753112 | |
+| 01 hero: karta 2 (Technologia) | górnik w pomarańczowym kasku (w oryginale) | `img/hero-karta-2.webp` | 28753112 | |
 | 02 o nas | dwóch górników z czołówkami i latarkami | `img/onas.webp` | 6831219 | |
 | 03 usługi 1–5 (i 07 zespół, te same pliki w oryginale) | ludzie w kaskach / magazyn / sylwetka z czołówką / spawacz / grota kryształów | `img/usluga-1..5.webp` | 11139140 / 34718922 / 39336523 / 35273758 / 40076446 | |
 | 04 minerały: 5 obracających się skał (sekwencje klatek) | skały rud | podagent 04: własna bryła three.js renderowana do klatek | — | |
