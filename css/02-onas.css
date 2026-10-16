@@ -1,1 +1,54 @@
-/* 02-onas */
+/* 02-onas: sekcja „O nas” (oryginał .section_about). Liczby z CSS Webflow oryginału [css] i arkusza wstrzykiwanego
+   przez main.js [css-wstrz]; paralaksa obrazu z main.js nd() (w. 6498–6710) [kod]. Klasy ogólne oryginału (.content,
+   .image-wrapper, .stats …) tylko w obrębie sekcji, żeby nie wchodzić w inne sekcje. */
+.section_about { position: relative; display: flex; flex-direction: column; gap: 16em; width: 100%;
+  padding: var(--site-margin) var(--site-margin) 16em; background-color: var(--white); }                      /* [css] */
+.section_about .content { display: flex; justify-content: space-between; align-items: stretch; gap: 1em; }
+.section_about .content_column { flex: 1; }
+.section_about .content_column.align-r { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; }
+
+/* obraz: pudełko 2 / 2,5; w środku obraz 120 % × 120 %, top −12 %, left 0 (main.js nd(): M = 1,2, D = −12 %),
+   ruch yPercent −10 → 10 w js */
+.section_about .image-wrapper { position: relative; overflow: hidden; border-radius: .5em; aspect-ratio: 2 / 2.5; }
+.section_about .image-p { position: absolute; left: 0; right: 0; top: -12%; display: block; width: 120%; max-width: none;
+  height: 120%; object-fit: cover; will-change: transform; }
+
+/* liczby */
+.section_about .stats { display: grid; grid-template-columns: 1fr 1fr; grid-auto-columns: 1fr; gap: 4em 1em; width: 100%; }
+.section_about .stats-card { display: flex; justify-content: flex-start; align-items: flex-start; gap: 1em; padding-top: 1em;
+  border-top: 1px solid #0003; }
+.section_about .is-stat { display: flex; flex-direction: column; gap: .75em; }
+.section_about .eyebrow-m.is-o-60 { opacity: .6; }
+.section_about .icon-wrap { mix-blend-mode: multiply; }                                                       /* [css-wstrz] */
+.section_about .service-icon_icon { display: block; width: 3.5em; mix-blend-mode: multiply; color: var(--primary); }
+/* .is-2 w CSS ma opacity .5, ale main.js oryginału (gm(), service-icons.js dt()) ustawia ikonie style.opacity = 1 [kod] */
+.section_about .service-icon_icon.is-2 { width: 3em; margin-top: -.55em; opacity: 1; }
+
+/* tekst i przycisk */
+.section_about .text-cta { display: flex; flex-direction: column; gap: 3em; width: 50%; padding-left: .5em; }
+
+@media screen and (max-width: 991px) {
+  .section_about { gap: 8em; padding-bottom: 8em; }
+  .section_about .content { flex-direction: column; }
+  .section_about .stats { row-gap: 1em; }
+  .section_about .stats-card { gap: .5em; padding-top: .75em; }
+  .section_about .service-icon_icon { width: 2em; }
+  .section_about .text-cta { gap: 2em; }
+}
+@media screen and (max-width: 767px) {
+  .section_about { gap: 12em; padding-bottom: 1em; }
+  .section_about .content { flex-direction: column; gap: 2em 1em; }                                  /* row 2em [css-wstrz] */
+  .section_about .content_column.align-r { order: -1; gap: 6em; }
+  .section_about .stats { grid-template-columns: 1fr; grid-auto-flow: row; }
+  .section_about .stats-card { justify-content: space-between; padding-bottom: 2em; }                  /* [css-wstrz] */
+  .section_about .icon-wrap { display: flex; flex: 1; justify-content: flex-start; align-items: flex-start; }
+  .section_about .is-stat { width: 48.5%; }
+  .section_about .text-cta { width: 100%; padding-left: 0; }
+  .section_about .button { margin-bottom: 0; }                                                        /* [css-wstrz] */
+}
+@media screen and (max-width: 479px) {
+  .section_about { padding-top: 1em; padding-bottom: 1em; }                                           /* [css] [css-wstrz] */
+  .section_about .content_column { display: flex; flex-direction: column; width: 100%; }
+  .section_about .stats-card { gap: 0; }
+  .section_about .is-stat { width: 50%; }
+}

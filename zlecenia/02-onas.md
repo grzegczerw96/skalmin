@@ -47,3 +47,16 @@ Hero (ciemna) → 02 (biała): granica przy 85 / 50 / 15% wysokości okna w dó�
 ## Gotowe, gdy
 B1, B2, B5, B6, B7 + liczby: wysokość sekcji (ekrany) 1,71 / 2,38, pudełko zdjęcia (vw), położenie siatki liczb, czas
 ikony Lottie.
+
+## Pomiary podagenta 02 (16.10)
+- Pudełka 1440 (vw od góry sekcji) [pomiar]: zdjęcie x 2,22 y 30 w 47,22 h 59,03; obraz w środku 120 % × 120 %, top −12 %,
+  left 0 (widać lewe 83 % obrazu); siatka liczb x 50,56 y 30 w 47,22 h 23,36, karty 23,06 × 4,83, rzędy co 9,27;
+  ikona 3,33 × 3,33 (3em); tekst + przycisk x 74,17 y 72,26 w 23,61 (dół kolumny = dół zdjęcia). 375: siatka y 117,5
+  (kolejność: liczby, tekst, zdjęcie y 396,5 w 91,8 h 114,7), sekcja 2,38 ekranu.
+- Paralaksa [kod main.js nd()]: yPercent −10 → 10 obrazu (o 12 % wysokości pudełka w każdą stronę), ease none,
+  scrub true, start 'top bottom' pudełka, koniec += wysokość pudełka + okno; w 4 punktach góra obrazu −0,24 / −0,16 /
+  −0,08 / 0 wysokości pudełka [pomiar].
+- Ikony [kod service-icons.js]: Lottie icon-11 (60 kl./s, 182 kl.), icon-12…16 (30 kl./s, 91 kl.) = 3,03 s; połowa
+  floor(kl. × 0,5) = 91 / 45 kl. = 1,52 / 1,5 s; wejście sekcji (IO próg 0,01) raz gra 0 → połowa; najechanie karty
+  0 → połowa, zjazd połowa → koniec. Krycie ikony 1 (style.opacity = 1 z kodu, mimo .is-2 {opacity:.5}).
+- Karty i liczby bez wjazdu, liczby nie liczą się w górę [kod: brak takich animacji w main.js].

@@ -39,14 +39,17 @@ wiersze na 1440, rozmiar).
 ### 02 · o nas
 - S.01 · About us → S.01 · O nas
 - CoMinVi is a leading underground mining / contractor with our Corporate Office and / Central Workshop based in
-  Guanajuato, Mexico. → SkalMin to czołowy wykonawca robót pod / ziemią, z siedzibą zarządu oraz główną / bazą maszyn
-  zlokalizowaną w Kielcach, Polska.
+  Guanajuato, Mexico. → SkalMin to czołowy wykonawca robót pod / ziemią, z siedzibą zarządu oraz centralnym /
+  warsztatem maszyn w Kielcach, w Polsce. (16.10, podagent 02: poprzednia wersja dawała 7 wierszy na 375 zamiast 6;
+  teraz 3 wiersze 6/6/6 słów na 1440 i 6 wierszy na 375)
 - Liczby: 1M Linear Meters / 20M Tons of mineral extracted / 5,1k Indirect jobs / 1,7k Current direct jobs / 7 Active
   projects / 36 Projects delivered → 1M Metrów bieżących / 18M Ton urobku wydobytego łącznie / 4,8k Miejsc pośrednich /
   1,5k Obecnych miejsc pracy / 9 Aktywne projekty / 41 Ukończone projekty
-- Akapit (44 słowa): Od ponad 20 lat specjalizujemy się w drążeniu wyrobisk dla krajowych i zagranicznych spółek
-  górniczych, głównie przy wydobyciu rud miedzi i srebra. Łączymy silną kulturę bezpieczeństwa, nowoczesny sprzęt i
-  głębokie przywiązanie do jakości, aby dostarczać stałe, wysokie wyniki w każdych warunkach pracy pod ziemią.
+- Akapit (44 słowa, 23 + 21, między zdaniami `<br>` jak oryginał): Od ponad 20 lat specjalizujemy się w drążeniu
+  wyrobisk dla krajowych i zagranicznych spółek górniczych, głównie przy wydobyciu rud miedzi, cynku i srebra. /
+  Łączymy silną kulturę bezpieczeństwa, nowoczesny sprzęt i dbałość o jakość, aby dawać stałe, wysokie wyniki w
+  każdych warunkach pracy pod ziemią. (16.10, podagent 02: wiersze jak oryginał, 1440: 4 + 4 = 8, 375: 5 + 4 = 9;
+  poprzednia wersja 4 + 5 i 5 + 5)
 - Przycisk: About us → O nas
 
 ### 03 · usługi
@@ -132,3 +135,4 @@ Wszystkie zdjęcia i film: Pexels (licencja Pexels: wolno używać i przerabiać
 | 06 maszyny ×6 (wycięte na czarnym) | równiarka, teleładowarka, walec, koparkoładowarka, wiertnica, ładowarka LHD | `img/maszyny/*.webp` (przezroczyste tło, `narzedzia/wytnij.py`) | 34200523 / 16717787 / 29470165 / 32917662 / 15743467 / 33201219 | walec bez kabiny (wycięcie modelu); napisy producentów na maszynach zostają |
 | 09 następna strona: tło | dwóch górników w tunelu | `img/nastepna.webp` | 14761195 | |
 | 03 / 07 ikony Lottie | ikony kart | podagent: własne ikony SVG z tym samym ruchem (czas, krzywa z JSON oryginału) | — | |
+| 02 ikony kart liczb (Lottie icon-11…16) | miara, waga, schemat, 4 kwadraty, teczka z zegarem, teczka z ptaszkiem | `js/ikony.js`: metry (miara nad torem), tony (odważnik ze wskazówką), siec (3 węzły), zespol (4 węzły z lampką), w-toku (podkładka z zegarem), gotowe (skrzynia z wiekiem i ptaszkiem) | — | ruch i czasy z JSON oryginału |
