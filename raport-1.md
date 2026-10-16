@@ -5,6 +5,7 @@
 |---|---|---|---|
 | 00 wspólne | 412 tys. (139 narzędzi, 43 min) | 0 | nic nowego (stany końcowe menu i paska = oryginał co do px na 1440 i 375; w 0,4 s otwierania różnica ~30 px z rozrzutu kliknięcia, podagent mierzył co klatkę: zgodne). Podagent złapał wyścig w `base.js` i 6 różnic klas tekstu w `base.css` (poprawione przez kierownika) |
 | 01 plansza + hero (tryb pełny, high) | 392 tys. (139 narzędzi, 43 min; przerwa na limit API) | 0 | układ = oryginał (H1, etykieta, karty ±0,1 vw na 1440 i 375); obraz filmu jaśniejszy i bardziej kontrastowy niż ciemny render oryginału (pytanie do Grzegorza); karta 2 słoneczna przy ciemnej karcie oryginału. Poprawka na prośbę Grzegorza (+447 tys. tokenów, 11 min): percentyle jasności ≤ oryginał, karta 2 Pexels 3186949 |
+| 02 o nas (lekki, Opus medium) | 259 tys. (89 narzędzi, 23 min) | 0 | pudełka 1440 = oryginał (±0,1 vw), 375 różnice 1–2,6 vw z łamania tekstu; zdjęcie: postacie małe i ciemne przy bliskim, świecącym kadrze oryginału (pytanie do Grzegorza); `ikony.js` przeniesiony do listy skryptów (kierownik) |
 
 ## Decyzje i odstępstwa (na bieżąco)
 - 16.10 Grzegorz: „spróbujmy kolejne wszystkie sekcje A+B” → sekcje 02–10 w trybie lekkim (`zlecenia/_tryb-lekki.md`)
@@ -20,6 +21,8 @@
   po rundzie poprawek, kierownik proponuje przełączenie tej jednej sekcji na Opusa.
 - 16.10 Grzegorz („ok” na punkcie kontrolnym): kierunek dobry; film hero przyciemnić i spłaszczyć kontrast, karta 2
   hero na ciemne ciepłe zdjęcie (odesłane podagentowi 01).
+
+- Do decyzji Grzegorza: zdjęcie 02 (postacie małe, daleko) — podmienić na bliższy kadr z czołówkami?
 
 ## Propozycje do warsztatu (zbierane w trakcie)
 Odpowiedź Grzegorza 16.10: „tak 1-4, nie zmieniaj procesu, tylko na tę stronę próba” → 1–4 stosowane tylko na cominvi

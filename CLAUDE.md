@@ -55,7 +55,7 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
 |---|---|---|---|---|
 | 00 | wspólne: nawigacja, menu, przycisk, etykieta sekcji, tekst odsłaniany | `zlecenia/00-wspolne.md` | przyjęta 16.10 (0 rund poprawek) | API na górze `js/00-wspolne.js` i `css/00-wspolne.css` |
 | 01 | plansza ładowania + hero | `zlecenia/01-hero.md` | przyjęta 16.10 (0 rund) | media odtwarza `narzedzia/hero-media.py` |
-| 02 | o nas | `zlecenia/02-onas.md` | do zrobienia | |
+| 02 | o nas | `zlecenia/02-onas.md` | przyjęta 16.10 (0 rund) | ikony kart: `js/ikony.js` (API na górze; 03 i 07 dopisują swoje) |
 | 03 | usługi | `zlecenia/03-uslugi.md` | do zrobienia | |
 | 04 | minerały | `zlecenia/04-mineraly.md` | do zrobienia | |
 | 05 | bezpieczeństwo | `zlecenia/05-bezpieczenstwo.md` | do zrobienia | |
