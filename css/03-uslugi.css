@@ -1,1 +1,73 @@
-/* 03-uslugi */
+/* 03-uslugi: sekcja „Nasze usługi” (oryginał .section_services). Liczby z CSS Webflow oryginału [css] i arkusza
+   wstrzykiwanego przez main.js [css-wstrz] (orig/main-wstrzykniety.css w. 92–100, 129–133, 281–289); ruch w
+   js/03-uslugi.js (service-cards.js, cards-reveal.js). Klasy ogólne (.content, .is-grid-3) tylko w obrębie sekcji. */
+.section_services { position: relative; display: flex; flex-direction: column; gap: 16em; width: 100%;
+  padding: var(--site-margin) var(--site-margin) 16em; background-color: var(--light-green); }               /* [css] */
+.section_services .content { display: flex; justify-content: space-between; align-items: stretch; gap: 1em; }
+.section_services .is-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-columns: 1fr; gap: 1em; width: 100%; }
+
+/* karta (button): reset przycisku + [css] */
+.section_services .service-card { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
+  aspect-ratio: 1; padding: var(--site-margin); background-color: var(--white); border: 0; border-radius: .5em; margin: 0;
+  overflow: hidden; cursor: default; font: inherit; color: var(--primary); text-align: left; -webkit-appearance: none; appearance: none; }
+.section_services .card-inner { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+  gap: 1.15em; width: 100%; }
+.section_services .body-l, .section_services .body-s { margin: 0; }
+.section_services .nowrap { white-space: nowrap; }        /* „z klientami” razem: w oryginale 6 słów w 2. wierszu akapitu */
+.section_services .service-icon { mix-blend-mode: multiply; }                                                 /* [css-wstrz] */
+.section_services .service-icon_icon { display: block; width: 3.5em; mix-blend-mode: multiply; color: var(--primary); }
+/* wjazd: do startu karty ukryte [css-wstrz] */
+.section_services .service-card.is-card-reveal-pending { opacity: 0 !important; transform: translateY(2em); pointer-events: none; }
+
+/* pole obrazów (6. komórka siatki) i przycisk w prawym dolnym rogu [css] */
+.section_services .services-viewer { position: relative; display: flex; justify-content: flex-end; align-items: flex-end;
+  border-radius: .5em; overflow: hidden; }
+.section_services .service-image { position: absolute; inset: 0; z-index: 0; display: none; width: 100%; height: 100%;
+  object-fit: cover; opacity: 0; }
+.section_services .services-viewer .button { position: relative; z-index: 3; }
+
+/* ≥992: tytuł na dole karty, opis wysuwa się spod niego przy najechaniu [css-wstrz] */
+@media (min-width: 992px) {
+  .section_services .is-grid-3 { overflow-anchor: none; }
+  .section_services .is-grid-3 > .service-card { min-height: 0; contain: layout; overflow: hidden; }
+  .section_services .service-card .service-icon { position: relative; z-index: 3; flex: 0 0 auto; align-self: flex-start; overflow: hidden; }
+  .section_services .service-card .service-icon_icon { width: 3.5em; height: 3.5em; }
+  .section_services .service-card .card-inner { position: relative; width: 100%; min-height: 0; flex: 1 1 0%; align-self: stretch; }
+  .section_services .service-card .body-l { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; z-index: 2;
+    transition: transform .8s cubic-bezier(.5, 0, 0, 1); }
+  .section_services .service-card .desc { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; height: 0; opacity: 0;
+    overflow: hidden; pointer-events: none; margin: 0;
+    transition: height .8s cubic-bezier(.5, 0, 0, 1), opacity .8s cubic-bezier(.5, 0, 0, 1); }
+  .section_services .service-card.is-svc-hover .desc { pointer-events: auto; }
+  .section_services .desc .line { display: block; overflow: hidden; }
+  .section_services .desc .line-inner { display: inline-block; transform: translateY(100%); will-change: transform;
+    transition: transform .8s cubic-bezier(.5, 0, 0, 1); }
+  html[data-menu-open=true] .section_services .service-card { pointer-events: none !important; background-color: var(--white) !important; }
+  html[data-menu-open=true] .section_services .service-card .body-l { transform: translateY(0) !important; }
+  html[data-menu-open=true] .section_services .service-card .desc { height: 0 !important; opacity: 0 !important; }
+  html[data-menu-open=true] .section_services .service-card .desc .line-inner { transform: translateY(100%) !important; transition-delay: 0s !important; }
+}
+
+@media screen and (max-width: 991px) {
+  .section_services { gap: 8em; padding-bottom: 8em; }                                                  /* [css] */
+  .section_services .content { flex-direction: column; }
+  .section_services .service-icon_icon { width: 2em; }
+  .section_services .service-image { display: none !important; }      /* oryginał: obrazy tylko ≥992 (service-cards.js T()) */
+}
+@media screen and (max-width: 767px) {
+  .section_services { gap: 12em; padding-bottom: 12em; }                                                /* [css] */
+  .section_services .content { gap: 1em; }
+  .section_services .is-grid-3 { grid-template-columns: 1fr; }
+  .section_services .service-card { flex-direction: row; gap: 6.75em; aspect-ratio: auto; padding: 1.5em 2em 2em 1.5em; } /* [css] [css-wstrz] */
+  .section_services .card-inner { gap: 4em !important; }                                               /* [css-wstrz] */
+  /* kolejne reguły ≤767 wstrzyknięte przez main.js oryginału (odczyt document.styleSheets na 375, 16.10) [css-wstrz] */
+  .section_services .service-card { padding-top: 1.5em; padding-bottom: 1.5em; }
+  .section_services .body-s { opacity: .5; font-weight: var(--fw-medium); }
+  /* oryginał 375: wiersz siatki z polem przycisku ma 84,6 px = 5,5em przy przycisku 38 px; reguły nie znalazłem [pomiar] */
+  .section_services .services-viewer { min-height: 5.5em; }
+}
+@media screen and (max-width: 479px) {
+  .section_services { gap: 12em; padding-top: 1em; padding-bottom: 12em; }                              /* [css] [css-wstrz] */
+  .section_services .service-card { row-gap: 2.8em; column-gap: 1.5em; }                               /* [css] / [css-wstrz] */
+  .section_services .service-icon_icon { width: 4em; }                                                  /* [css] */
+}

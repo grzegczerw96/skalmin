@@ -42,3 +42,17 @@ Najechanie karty (wjazd i zjazd co 50 ms obok oryginału), wjazd kart, obraz prz
 
 ## Gotowe, gdy
 B1, B2, B3, B5, B6, B7 + liczby: wysokość 1,83 / 2,79 ekranu, pudełka kart (vw), czasy najechania, kaskada wjazdu.
+
+## Dopisane przez podagenta 03 (16.10)
+- Tło sekcji `--light-green` (atrybut `bg="white"` jak w oryginale) [css]; przejście z 02: zwykła granica sekcji.
+- Wjazd kart: każda osobno, bez kaskady; `autoAlpha` 0→1, `y` 2em→0, 0,8 s `power2.out`, start `top 85%`, once [kod
+  cards-reveal.js]; karty w jednym rzędzie startują razem.
+- Najechanie ≥992: tło białe→`--accent`, opis `height` + `opacity`, tytuł w górę o wysokość opisu + 1,15em, wiersze
+  opisu `translateY(100%)→0` z opóźnieniem i·0,03 s (zjazd od ostatniego); wszystko 0,8 s `cubic-bezier(.5,0,0,1)`
+  [kod service-cards.js]. Pomiar 1440 karta 4: tytuł −75,96 px, opis 57,56 px u obu [pomiar].
+- Obraz: w 6. komórce siatki (`.services-viewer`) obraz karty N, `opacity` 0→1 0,5 s, przycisk gaśnie 0,5 s; ≤991 brak
+  [kod T()]. Bez najechania pole puste (tło sekcji) z przyciskiem w prawym dolnym rogu.
+- Ikony: Lottie „Icon 06–10” z CDN (pobrane do `orig/lottie/icon-06..10.json`), 60 kl./s, 182 (Icon 08: 181) klatki;
+  tylko najechanie (pierwsza / druga połowa), bez gry przy wejściu [kod service-icons.js].
+- ≤767 dodatkowo [css-wstrz, odczyt arkuszy na 375]: `.section_services .body-s{opacity:.5;font-weight:500}`,
+  `.service-card{padding-top:1.5em;padding-bottom:1.5em}`; wiersz pola przycisku 84,6 px = 5,5em [pomiar].

@@ -60,6 +60,14 @@ wiersze na 1440, rozmiar).
 - Karty: Engineering / Ground Support & Fortification / Development / Production / Hauling → Inżynieria / Obudowa i
   wzmacnianie górotworu / Drążenie / Wydobycie / Odstawa (opisy kart: podagent, zasada wyżej)
 - Przycisk: See More → Zobacz więcej
+- Opisy kart (16.10, podagent 03; słowa w wierszach jak oryginał na 1440, długość karty −6…+5%):
+  Planujemy i budujemy pewną, wydajną i trwałą sieć / wyrobisk, dopasowaną do geologii i warunków / eksploatacji
+  w każdym naszym projekcie. (8/6/5) · Wzmacniamy wyrobiska pod ziemią kotwami, siatką, / torkretem i łukami ze stali, by
+  zabezpieczyć spękany / lub zagrożony górotwór. (6/8/3) · Drążymy precyzyjnie chodniki dla ramp oraz punktów / dostępu,
+  łącząc w pracy wiercenie, strzelanie oraz / techniki urabiania. (7/7/2) · Urabiamy rudę sprawdzoną metodą komorową,
+  którą / dobieramy pod kątem wydajności, zubożenia oraz / bezpieczeństwa całej załogi. (6/6/3) · Odstawiamy urobek
+  i skałę płonną za pomocą / ładowarek LHD, niskoprofilowych wozów oraz / sprawnej logistyki podziemnej. (7/5/3)
+- Akapit: „z klientami,” w `span.nowrap` (inaczej „z” wisi na końcu 2. wiersza: 5/7/5/2 zamiast 5/6/6/2)
 
 ### 04 · minerały
 - S.03 · Minerals → S.03 · Minerały; Minerals We Extract → Minerały, które wydobywamy
@@ -129,7 +137,7 @@ Wszystkie zdjęcia i film: Pexels (licencja Pexels: wolno używać i przerabiać
 | 01 hero: karta 1 | dwóch górników z czołówkami w tunelu | `img/hero-karta-1.webp` | 13658087 | |
 | 01 hero: karta 2 (Technologia) | górnik w pomarańczowym kasku (w oryginale) | `img/hero-karta-2.webp` | 3186949 | spawacz w masce w ciemnym warsztacie (16.10, zamiast ładowarki 28753112) |
 | 02 o nas | dwóch górników z czołówkami i latarkami | `img/onas.webp` | 6831219 | |
-| 03 usługi 1–5 (i 07 zespół, te same pliki w oryginale) | ludzie w kaskach / magazyn / sylwetka z czołówką / spawacz / grota kryształów | `img/usluga-1..5.webp` | 11139140 / 34718922 / 39336523 / 35273758 / 40076446 | |
+| 03 usługi 1–5 (i 07 zespół, te same pliki w oryginale) | ludzie w kaskach / magazyn / sylwetka z czołówką / spawacz / grota kryształów | `img/usluga-1..5.webp` | 11139140 / 34718922 / 39336523 / 5845964 / 40076446 | 4: 16.10 podagent 03 zamiast 35273758 (iskry jak karta 2 hero); obraz 4 widać w oryginale przy najechaniu karty 4 |
 | 04 minerały: 5 obracających się skał (sekwencje klatek) | skały rud | podagent 04: własna bryła three.js renderowana do klatek | — | |
 | 05 bezpieczeństwo | górnik w masce i z czołówką | `img/bezpieczenstwo.webp` | 34438147 | |
 | 06 maszyny ×6 (wycięte na czarnym) | równiarka, teleładowarka, walec, koparkoładowarka, wiertnica, ładowarka LHD | `img/maszyny/*.webp` (przezroczyste tło, `narzedzia/wytnij.py`) | 34200523 / 16717787 / 29470165 / 32917662 / 15743467 / 33201219 | walec bez kabiny (wycięcie modelu); napisy producentów na maszynach zostają |
