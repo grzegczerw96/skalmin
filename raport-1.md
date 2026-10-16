@@ -15,6 +15,10 @@
 - Do decyzji przy 02: akapit 02 z `brand.md` łamie się na 375 na 7 wierszy, w oryginale 6 (zgłosił podagent 00).
 
 ## Propozycje do warsztatu (zbierane w trakcie)
+Odpowiedź Grzegorza 16.10: „tak 1-4, nie zmieniaj procesu, tylko na tę stronę próba” → 1–4 stosowane tylko na cominvi
+jako próba; warsztat (`C:\Projekty\warsztat-nowy`) bez zmian. Po próbie: wyniki (czas, tokeny, co przepuścił tryb lekki)
+i ponowne pytanie o wprowadzenie.
+
 | # | Skąd | Plik i miejsce | Dokładne brzmienie | Co zyskujemy |
 |---|---|---|---|---|
 | 1 | zmiana sposobu pracy Grzegorza 16.10 („A+B”), sekcja 00: 43 min / 412 tys. tokenów, większość na sprawdzanie | `checklista.md`, część B, nowy akapit na górze | „**Dwa tryby sprawdzania.** Pełny (wszystkie punkty B jak niżej) dla sekcji z nową albo kruchą techniką: wejście strony, przypięcie ze `scrub`, WebGL / sekwencje klatek, walec 3D. Lekki dla pozostałych: B1 pudełka i wiersze na 1440 i 375; B2 pomiar parami w 4 punktach w dół i w górę, bez kółka (chyba że przypięcie); B3 czasy z kodu + zrzut stanu po, bez zapisu co 50 ms; B5 granica przy 50%; B6 pudełko i temat na 1440 i 375; B7 tylko 375×812; D i `wierzch.py` raz na koniec. Tryb wpisuje kierownik w zleceniu.” | szacunkowo 20–25 zamiast 40+ min na zwykłą sekcję (zweryfikować w raporcie: czas, tokeny, co tryb lekki przepuścił w sesji 2) |
