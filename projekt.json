@@ -1,0 +1,10 @@
+{
+  "name": "cominvi",
+  "page": "index.html",
+  "base_url": "https://grzegczerw96.github.io/skalmin/",
+  "init": "",
+  "no_carry": "",
+  "shots": {"query": "?intro=0"},
+  "audit": {"clip": ""},
+  "wierzch": {"ignore": ""}
+}

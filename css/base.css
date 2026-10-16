@@ -1,0 +1,93 @@
+/* SkalMin: części wspólne (zmienia tylko kierownik). Liczby z CSS oryginału (cominvi-staging.webflow.shared.css). */
+
+/* ---- kroje: Inter Tight (za Helvetica Now Display), IBM Plex Mono (za PP Supply Mono) ---- */
+@font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 100 900; font-display: block;
+  src: url(../fonts/inter-tight-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF,
+    U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'Inter Tight'; font-style: normal; font-weight: 100 900; font-display: block;
+  src: url(../fonts/inter-tight-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: block;
+  src: url(../fonts/plex-mono-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF,
+    U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: 'IBM Plex Mono'; font-style: normal; font-weight: 400; font-display: block;
+  src: url(../fonts/plex-mono-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+/* ---- zmienne: kolory i skalowanie (system Osmo z <head> oryginału: font-size body = szerokość / (ideał / 16)) ---- */
+:root {
+  --primary: #151515; --white: #fff; --accent: #f47920; --light-green: #ebf0ed; --gray: #e0e0e0;
+  --site-margin: 2em;
+  --sans: 'Inter Tight', Arial, sans-serif;
+  --mono: 'IBM Plex Mono', Arial, monospace;
+  /* grubości: Helvetica Now Display 700 → Inter Tight 600, 500 → 500 (kreska 0% / +5%, szerokość wierszy −1,8…+0,5%) */
+  --fw-bold: 600; --fw-medium: 500;
+  /* PP Supply Mono ma 0,578 em na znak, Plex Mono 0,6 em: odstęp liter wyrównuje szerokość wiersza */
+  --mono-ls: -0.022em;
+  --size-unit: 16; --size-container-ideal: 1440; --size-container-min: 992px; --size-container-max: 1920px;
+  --size-container: clamp(var(--size-container-min), 100vw, var(--size-container-max));
+  --size-font: calc(var(--size-container) / (var(--size-container-ideal) / var(--size-unit)));
+}
+@media screen and (max-width: 991px) { :root { --size-container-ideal: 834; --size-container-min: 768px; --size-container-max: 991px; } }
+@media screen and (max-width: 767px) { :root { --size-container-ideal: 550; --size-container-min: 480px; --size-container-max: 767px; } }
+@media screen and (max-width: 479px) { :root { --size-container-ideal: 390; --size-container-min: 320px; --size-container-max: 479px; } }
+@media screen and (max-width: 991px) { body { --site-margin: 1em; } }
+
+/* ---- reset ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scrollbar-width: none; }          /* oryginał: pasek przewijania ukryty */
+body ::-webkit-scrollbar, html::-webkit-scrollbar { display: none; }
+body { margin: 0; background-color: var(--primary); color: var(--primary); font-family: var(--sans); line-height: 1;
+  font-size: var(--size-font); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+h1, h2, h3, h4, p { margin: 0; font-weight: inherit; font-size: inherit; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img, video, canvas, svg { display: block; max-width: 100%; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+.content-wrap { width: 100%; }
+.sr-only { white-space: nowrap; clip: rect(0, 0, 0, 0); border-width: 0; width: 1px; height: 1px; margin: -1px; padding: 0;
+  position: absolute; overflow: hidden; }
+
+/* Lenis 1.3.8 (lib/lenis.css) */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* ---- klasy tekstu wspólne dla sekcji (CSS oryginału; 700 → var(--fw-bold)) ---- */
+.body-xxl { color: var(--primary); text-align: center; letter-spacing: -.025em; font-size: 7em; font-weight: var(--fw-bold); line-height: 80%; display: block; }
+.body-xl { color: var(--white); letter-spacing: -.0098em; font-size: 3em; font-weight: var(--fw-bold); line-height: 100%; display: block; }
+.body-l { letter-spacing: -.025em; font-size: 2em; font-weight: var(--fw-bold); line-height: 1.1; }
+.body-m { font-size: 1.25em; font-weight: var(--fw-bold); line-height: 1.1; }
+.body-s { font-size: 1em; font-weight: var(--fw-bold); line-height: 1.2; }
+.stat_number { letter-spacing: -.0098em; font-size: 2.5em; font-weight: var(--fw-bold); line-height: 1; display: block; }
+.eyebrow-s, .eyebrow-m, .eyebrow-l, .button_label-small { font-family: var(--mono); font-weight: 400; letter-spacing: var(--mono-ls);
+  text-transform: uppercase; }
+.eyebrow-s { font-size: .7em; line-height: .9; }
+.eyebrow-m { font-size: .75em; line-height: 1; display: block; }
+.eyebrow-l { font-size: .75em; line-height: 120%; display: block; }
+.button_label-small { text-transform: none; font-size: .75em; line-height: .8; }
+.o-60 { opacity: .6; }
+@media screen and (max-width: 991px) {
+  .body-xxl { font-size: 4em; }
+  .body-xl { font-size: 2em; }
+  .body-l { font-size: 1.5em; }
+  .body-m { font-size: 1em; }
+  .body-s { font-size: .75em; }
+  .stat_number { font-size: 2em; }
+  .eyebrow-s { font-size: .5em; }
+  .eyebrow-l { font-size: .638em; }
+  .button_label-small { font-size: .813em; }
+}
+@media screen and (max-width: 767px) {
+  .body-m { font-size: 1.25em; }
+  .body-s { font-size: 16px; }
+}
+
+/* ---- ?okno: rozmiar okna i powiększenie w rogu (dla zrzutów Grzegorza) ---- */
+.sm-okno { position: fixed; right: 6px; bottom: 6px; z-index: 100000; pointer-events: none; padding: 3px 6px; border-radius: 3px;
+  background: rgba(255, 0, 80, .85); color: #fff; font: 12px/1.2 var(--mono); letter-spacing: 0; }
