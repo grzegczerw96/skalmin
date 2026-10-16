@@ -58,7 +58,7 @@ wiersze na 1440, rozmiar).
   opportunity into / operational excellence. → Łącząc głęboką wiedzę geologiczną oraz / kunszt inżynierów, pracujemy
   ramię w ramię / z klientami, zamieniając surowy potencjał w / operacyjną doskonałość.
 - Karty: Engineering / Ground Support & Fortification / Development / Production / Hauling → Inżynieria / Obudowa i
-  wzmacnianie górotworu / Drążenie / Wydobycie / Odstawa (opisy kart: podagent, zasada wyżej)
+  kotwienie wyrobisk (16.10: „wzmacnianie górotworu” łamało się na 375 na 3 wiersze) / Drążenie / Wydobycie / Odstawa (opisy kart: podagent, zasada wyżej)
 - Przycisk: See More → Zobacz więcej
 - Opisy kart (16.10, podagent 03; słowa w wierszach jak oryginał na 1440, długość karty −6…+5%):
   Planujemy i budujemy pewną, wydajną i trwałą sieć / wyrobisk, dopasowaną do geologii i warunków / eksploatacji
