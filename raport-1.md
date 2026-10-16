@@ -15,6 +15,11 @@
   sekcji, `?okno`).
 - Do decyzji przy 02: akapit 02 z `brand.md` łamie się na 375 na 7 wierszy, w oryginale 6 (zgłosił podagent 00).
 
+- 16.10 Grzegorz: „sekcje 2-4 opus medium jak teraz a resztę sonet medium” → 02–04 Opus 5.5 medium, 05–10 Sonnet 5.5
+  medium (próba na tej stronie; w tabeli kosztów kolumna z modelem).
+- 16.10 Grzegorz („ok” na punkcie kontrolnym): kierunek dobry; film hero przyciemnić i spłaszczyć kontrast, karta 2
+  hero na ciemne ciepłe zdjęcie (odesłane podagentowi 01).
+
 ## Propozycje do warsztatu (zbierane w trakcie)
 Odpowiedź Grzegorza 16.10: „tak 1-4, nie zmieniaj procesu, tylko na tę stronę próba” → 1–4 stosowane tylko na cominvi
 jako próba; warsztat (`C:\Projekty\warsztat-nowy`) bez zmian. Po próbie: wyniki (czas, tokeny, co przepuścił tryb lekki)
