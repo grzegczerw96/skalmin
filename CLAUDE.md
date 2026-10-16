@@ -51,7 +51,7 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
 ## Sekcje
 | NN | Sekcja | Zlecenie | Stan | Uwagi |
 |---|---|---|---|---|
-| 00 | wspólne: nawigacja, menu, przycisk, etykieta sekcji, tekst odsłaniany | `zlecenia/00-wspolne.md` | do zrobienia | komponenty dla wszystkich sekcji |
+| 00 | wspólne: nawigacja, menu, przycisk, etykieta sekcji, tekst odsłaniany | `zlecenia/00-wspolne.md` | przyjęta 16.10 (0 rund poprawek) | API na górze `js/00-wspolne.js` i `css/00-wspolne.css` |
 | 01 | plansza ładowania + hero | `zlecenia/01-hero.md` | do zrobienia | |
 | 02 | o nas | `zlecenia/02-onas.md` | do zrobienia | |
 | 03 | usługi | `zlecenia/03-uslugi.md` | do zrobienia | |

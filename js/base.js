@@ -39,7 +39,10 @@
 
   const fonts = ['600 1em "Inter Tight"', '500 1em "Inter Tight"', '400 1em "IBM Plex Mono"']
     .map((f) => document.fonts.load(f, 'SkalMinąę'));
-  Promise.all(fonts).catch(() => {}).then(() => {
+  // (16.10: kroje z pamięci przeglądarki dawały pętlę sekcji przed rejestracją plików sekcji; skrypty stoją na końcu
+  //  <body>, więc DOMContentLoaded = wszystkie SM.sekcja(...) już są)
+  const dom = new Promise((r) => (document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', r) : r()));
+  Promise.all([dom, Promise.all(fonts).catch(() => {})]).then(() => {
     for (const [nazwa, fn] of SM._sekcje) {
       try { fn(); } catch (e) { console.error('sekcja ' + nazwa, e); }
     }
