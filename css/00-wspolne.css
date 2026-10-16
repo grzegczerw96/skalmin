@@ -1,1 +1,158 @@
-/* 00-wspolne */
+/* 00-wspolne: komponenty wspólne wszystkich sekcji. Liczby z CSS oryginału [css] i arkusza wstrzykiwanego przez main.js
+   oryginału [css-wstrz] (main.js w. 13050, `var tg`); ruch w js/00-wspolne.js.
+
+   KLASA → CO ROBI, JAK UŻYĆ
+   .navbar, .nav-inner        nawigacja i menu: tylko w bloku S:00 w index.html (nie kopiować)
+   html[data-menu-open=true]  menu otwarte albo w ruchu (jak oryginał; sekcje mogą tym wyłączać swoje efekty)
+   html.sm-menu               menu widoczne (od początku otwierania do końca zamykania)
+
+   PRZYCISK (a.button; strzałki z oryginału; najechanie w JS: treść jedzie o 2,25em, 0,5 s, 'main', tylko ≥992 px):
+     <a href="#onas" class="button" aria-label="Zobacz więcej o nas">
+       <span class="button_inner"><span class="button-inner_content">
+         <svg class="is-arrow-square is-left" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+           <rect width="32" height="32" rx="4" fill="currentColor" class="arrow-white-1_bg"/>
+           <path fill="currentColor" class="arrow-white-1_arrow"
+             d="M14 10.9388C14 10.5487 14.4767 10.3533 14.7556 10.6292L19.8704 15.6903C20.0432 15.8614 20.0432 16.1386 19.8704 16.3097L14.7556 21.3708C14.4767 21.6467 14 21.4513 14 21.0612V10.9388Z"/></svg>
+         <span class="label-wrap"><span class="button_label-small">O nas</span></span>
+         <svg class="button-arrow" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+           <rect width="32" height="32" rx="4" fill="currentColor" class="arrow-bg"/>
+           <path fill="currentColor" class="arrow-arrow"
+             d="M14 10.9388C14 10.5487 14.4767 10.3533 14.7556 10.6292L19.8704 15.6903C20.0432 15.8614 20.0432 16.1386 19.8704 16.3097L14.7556 21.3708C14.4767 21.6467 14 21.4513 14 21.0612V10.9388Z"/></svg>
+       </span></span>
+     </a>
+     wariant biały (oryginał: button-white, sekcja 09): class="button is-white"
+     przycisk dodany do strony po starcie: SM.przyciski(korzeń)
+
+   ETYKIETA SEKCJI („S.01” w ramce + nazwa w czarnym prostokącie; obok akapit opływa ją jak w oryginale):
+     <div class="intro">                       (.intro.p-top: kreska u góry i odstęp, sekcje 05 i 08)
+       <div class="eyebrows">                  (.eyebrows.is-white: na ciemnym tle, sekcja 09)
+         <div class="is-eyebrow"><span class="eyebrow-s">S.01</span></div>
+         <div class="is-eyebrow is-black"><h2 class="eyebrow-s">O nas</h2></div>
+       </div>
+       <p tr="1" class="body-xl is-black">SkalMin to czołowy wykonawca robót pod ziemią, …</p>
+     </div>
+
+   TEKST ODSŁANIANY PRZEWIJANIEM: atrybut tr="1" na akapicie (zwykle .body-xl.is-black); dzieli i rusza js/00-wspolne.js.
+     odmiany koloru z oryginału: .body-xl.is-black, .is-center, .is-o-30
+
+   LINK STOPKI z kreską przy najechaniu: class="footer-link" [css-wstrz] */
+
+/* ---------- nawigacja [css] + [css-wstrz] ---------- */
+.navbar { position: fixed; left: var(--site-margin); right: var(--site-margin); top: 1.5em; bottom: auto; z-index: 998;
+  display: flex; justify-content: space-between; align-items: center; pointer-events: none; color: var(--white);
+  mix-blend-mode: difference; }                                                    /* [css-wstrz]: kolory odwraca tło */
+.navbar .is-link { display: block; height: 1.75em; pointer-events: auto; color: var(--white); }   /* 1.75em [css-wstrz] */
+.is-logo_main { width: 6.25rem; overflow: visible; clip-path: inset(.5px 0 .5px 0); }   /* przycięcie: clip0 oryginału */
+.is-logo_main .logo-litery { font-family: var(--sans); font-weight: var(--fw-medium); font-size: 14.8px; }
+.is-menu { display: flex; justify-content: flex-start; align-items: center; gap: 1.125rem; pointer-events: auto;
+  background-color: transparent; }
+/* oryginał: wysokość 1rem; u nas .875rem: Inter Tight ma litery wyżej w wierszu i spod 1rem wystawała kopia napisu [pomiar] */
+.is-menu_label-wrap { height: .875rem; overflow: hidden; }
+.is-menu_label-inner { display: flex; flex-direction: column; }
+.is-label { display: block; font-size: .875rem; font-weight: var(--fw-medium); }
+.menu-icon { position: relative; display: block; width: 3rem; height: 3rem; padding: 0 13px; border: 1px solid var(--white);
+  border-radius: 1000px; }
+.menu-icon_bar { position: absolute; left: 50%; width: 1.313rem; height: 1px; background-color: var(--white);
+  transform: translate(-50%); }
+.menu-icon_bar.is-1 { top: 42%; }
+.menu-icon_bar.is-2 { bottom: 42%; }
+
+/* ---------- menu (za stroną; strona zjeżdża w dół i maleje, js) ---------- */
+.nav-inner { position: fixed; inset: 13.5rem 0 auto; z-index: 0; display: flex; justify-content: space-between;
+  align-items: center; gap: 1em; padding: 0 2em; visibility: hidden; }
+html.sm-menu .nav-inner { visibility: visible; }
+.links { display: flex; flex-direction: column; flex: 1; gap: 0; margin: 0; padding: 0; list-style: none; }
+.link-item { display: flex; justify-content: flex-start; align-items: center; gap: .5em; height: 2.3em; overflow: hidden; }
+.navlink { display: flex; justify-content: flex-start; align-items: center; gap: .8em; transform: translate(-2.3em); }
+.navlink_icon { width: 1.5em; flex: none; }
+.icon-bg { color: var(--accent); }
+.icon--inner { color: var(--primary); }
+.navlink_label { display: block; color: var(--white); letter-spacing: -.0075em; font-size: 2em; font-weight: var(--fw-bold);
+  line-height: .9; white-space: nowrap; text-box: trim-both cap alphabetic; }       /* text-box: <style> w <head> oryginału */
+.nav-inner .navlink[aria-current=page] { opacity: .5; }
+.locales-list { display: flex; justify-content: flex-start; align-items: center; gap: .5em; }
+.navlink-locale { display: flex; justify-content: flex-start; align-items: center; gap: .8em; color: var(--white); }
+.navlink-locale.w--current { color: var(--accent); }
+.navlink-locale .navlink_label { color: inherit; }                                   /* <style> w <head> oryginału */
+.navlink-social { display: flex; justify-content: flex-start; align-items: center; gap: .8em; color: var(--primary);
+  opacity: 1; transition: opacity .2s ease-in-out; }                                  /* [css-wstrz] */
+.link-item:has(.navlink-social:hover) .navlink-social:not(:hover) { opacity: .8; }
+.social-logo { width: 1.5em; }
+.social-bg { color: var(--white); }
+
+/* ---------- przycisk [css] + [css-wstrz] ---------- */
+.button { --_ui-colors---button-bg: var(--primary); --_ui-colors---button-text: var(--white);
+  --_ui-colors---button-arrow-1-bg: var(--white); --_ui-colors---button-arrow-1-el: var(--primary);
+  display: flex; justify-content: flex-start; align-items: center; width: fit-content; overflow: hidden;
+  border-radius: .5em; background-color: var(--_ui-colors---button-bg); text-transform: uppercase;
+  clip-path: inset(0 round .5em); contain: paint; }
+.button_inner { display: flex; justify-content: space-between; align-items: center; padding: .25em .25em .25em 0; }
+.button-inner_content { display: flex; justify-content: space-between; align-items: center; height: 2em; }
+.is-arrow-square { width: 2em; height: 2em; }
+.is-arrow-square.is-left { position: absolute; left: -2em; }
+.label-wrap { display: flex; justify-content: flex-start; align-items: center; padding-left: 1.5em; padding-right: 1.5em; }
+/* base.css daje .button_label-small text-transform:none; w oryginale napis dziedziczy wersaliki z .button */
+.button .button_label-small { color: var(--_ui-colors---button-text); text-transform: inherit; }
+.button-arrow { width: 2em; }
+.arrow-bg { color: var(--_ui-colors---button-arrow-1-bg); }
+.arrow-arrow { color: var(--_ui-colors---button-arrow-1-el); }
+.arrow-white-1_bg { color: var(--accent); }
+.arrow-white-1_arrow { color: var(--primary); }
+.button.is-white { background-color: var(--white); transition: background-color .5s cubic-bezier(.6, 0, 0, 1); }
+.button.is-white .arrow-bg { color: var(--primary); }
+.button.is-white .arrow-arrow { color: var(--white); }
+.button.is-white .button_label-small { color: var(--primary); transition: color .5s cubic-bezier(.6, 0, 0, 1); }
+.button.is-white:hover, .button.is-white:focus-visible { background-color: var(--primary); }
+.button.is-white:hover .button_label-small, .button.is-white:focus-visible .button_label-small { color: var(--white); }
+
+/* ---------- etykieta sekcji i układ .intro [css] + [css-wstrz] ---------- */
+.intro { display: block; width: 100%; gap: 16px; padding-right: 21.688em; }
+.intro.p-top { padding-top: var(--site-margin); border-top: 1px solid #00000080; }
+.eyebrows { float: left; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+  gap: .25em; margin-right: 1.725em; padding-top: .3em; }
+.is-eyebrow { display: flex; justify-content: center; align-items: center; padding: .135em .25em .18em;
+  border: 1px solid var(--primary); border-radius: .25em; }
+.is-eyebrow.is-black { background-color: var(--primary); color: var(--white); }
+.eyebrows.is-white .is-eyebrow { border-color: var(--white); color: var(--white); }
+/* [css-wstrz] color: var(--black), zmienna nieokreślona; [pomiar] napis #151515 */
+.eyebrows.is-white .is-eyebrow:nth-of-type(2) { background-color: var(--white); color: var(--primary); }
+
+/* ---------- tekst: odmiany .body-xl z oryginału (akapity tr="1") [css] ---------- */
+.body-xl.is-black { color: var(--primary); }
+.body-xl.is-center { text-align: center; }
+.body-xl.is-o-30 { opacity: .3; color: var(--primary); }
+[tr="1"] .word { white-space: nowrap; }
+
+/* ---------- link stopki [css-wstrz] ---------- */
+.footer-link { position: relative; }
+.footer-link:hover { opacity: 1; }
+.footer-link::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background-color: #151515;
+  transform: scaleX(0); transform-origin: bottom right; transition: transform .5s cubic-bezier(.32, .01, 0, 1); }
+.footer-link:hover::after { transform: scaleX(1); transform-origin: bottom left; }
+
+/* ---------- progi ---------- */
+@media screen and (max-width: 991px) {
+  .navbar { top: 1em; }
+  .is-label { display: none; }
+  .nav-inner { top: 5.625rem; }
+  .link-item { height: 2.7em; }
+  .navlink_label { font-size: 2.25em; }
+  .social-logo { width: 1.8em; }
+  .button { padding: 0; }
+  .is-arrow-square { width: 1.5em; height: 1.5em; }
+  .button .button_label-small { font-size: .9rem; }                                  /* [css-wstrz] */
+  .intro { padding-right: 0; }
+  .eyebrows { gap: .125em; margin-right: 1em; padding-top: .25em; }
+  .is-eyebrow { padding: .1em .2em; }
+  .is-eyebrow .eyebrow-s { font-size: .75rem; }                                      /* [css-wstrz]; base: .5em */
+}
+@media screen and (max-width: 767px) {
+  .nav-inner { flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 0; padding-left: 1em;
+    padding-right: 1em; }
+  .intro { display: flex; flex-direction: column; }
+}
+@media screen and (max-width: 479px) {
+  .button_inner { padding: .25em; }
+  .button .button_label-small { font-size: .85rem; }                                 /* [css-wstrz] */
+  .eyebrows { row-gap: .3em; }                                                       /* [css-wstrz] */
+}

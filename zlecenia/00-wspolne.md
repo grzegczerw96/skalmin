@@ -77,3 +77,38 @@ B1 (nawigacja na 1440 i 375 ±1 vw), B2 (tekst odsłaniany: krycie wierszy w 6 p
 oryginału, na jednym akapicie sekcji 02 oryginału), B3 (najechanie „Menu” i przycisku co 50 ms obok oryginału),
 B7 (375×812). Liczby do zgodności: pozycja i rozmiar logo i „Menu”, czasy najechań, czas otwarcia menu, krycie wierszy
 w połowie postępu.
+
+## Dopisane przez podagenta 00 (16.10.2026): źródła i pomiary
+Źródła: `[css-wstrz]` = arkusz wstrzykiwany przez main.js (w. 13050, `var tg`; `orig\main-wstrzykniety.css`), wygrywa z
+Webflow CSS; `[css-head]` = `<style>` w `<head>` oryginału (Osmo i drobne reguły).
+- Nawigacja: `.navbar{mix-blend-mode:difference}` [css-wstrz] → kolory paska odwraca tło (biały nad ciemnym, czarny nad
+  białym); motyw kółka czytany raz z pierwszego `[bg]` (= `hero`: tło przezroczyste, ramka i kreski białe) i nie zmienia się
+  przy przewijaniu [kod w. 8394–8400, pomiar: hero / about / next]. Logo: `a{height:1.75em}` [css-wstrz]; tylko
+  `.is-logo_main` widoczne (`.is-logo{display:none}` zawsze) [css]. Pudełka 1440: pasek 32,24 1376×48; logo 32,34 100×27;
+  „Menu” 1307,40 35×16; kółko 1360,24 48×48 [pomiar]; 375: pasek 15,4 / logo 100×27 / kółko 311,6 [pomiar].
+- Pasek chowa się przy przewijaniu w dół (`left/right −9em`, 0,5 s, krzywa domyślna GSAP, tween od nowa w każdej klatce
+  z ruchem > 2 px) i wraca przy ruchu w górę [kod zp() w. 8069; pomiar: ok. 1 s do −144 px]. `ng()` nigdy nie wołane;
+  wejście hero przesuwa pasek tylko, gdy nie stoi na marginesie [kod w. 5826].
+- Logo, najechanie: grupy liter `is-t-1` yPercent −120, `is-t-2` −100, litery −42 (druga kopia z +100), kaskada 0,03,
+  0,5 s, krzywa `M0,0 C0.51,0 0,1 1,1`, po końcu powrót bez ruchu [kod Fp() w. 8130]. yPercent grupy SVG liczony co klatkę
+  od ramki grupy (rośnie przy rozjechaniu liter): koniec −13,61 / 4,59 j., szczyt −15,6 przy 0,3 s [pomiar].
+- Menu: strona zjeżdża do `top` = dół `.nav-inner` + 9em (1440: 470 px; 768–991: 15em; <768: 32em = 492 px przy 375),
+  skala (W−64)/W (<768: (W−32)/W), promień 1rem, 1,2 s `main`; kółko obrót 45°, tło → `--accent`, ramka i kreski →
+  `--primary`, kreski od razu w krzyż; linki z `margin-top` 8/11/14/10/13/16/12/15/18/21/24/27em → 0 [kod Ip()]. Przy
+  zamykaniu kolory kółka wracają od razu (1. klatka) [pomiar]. Maska `mask-overlay` wyłączona `display:none!important`
+  [css-wstrz]; `page-info` `display:none` [css]. Lenis stoi, po zamknięciu strona w tym samym miejscu [pomiar 1622/1622].
+- Linki menu: tekst `text-box: trim-both cap alphabetic` [css-head] (wysokość 22,8 px, nie 28,8); `.navlink-locale
+  .navlink_label{color:inherit}`, bieżący język `--accent` [css-head]; najechanie linku x −(ikona + odstęp) = −36,8 → 0,
+  0,5 s `main`, ≥992 px [button-hover.js].
+- Najechanie „Menu” (tylko kółko, `mouseenter` na `.menu-icon`, bez warunku szerokości): od razu tło i ramka `--primary`,
+  kreski białe; 0,6 s `M0,0 C0.68,0 0,1 1,1`: napis yPercent −50 (−14 px), kreski `top/bottom 49%`, druga obrót 90°;
+  zjazd tak samo z powrotem, kolory od razu [kod w. 7499–7608, pomiar co 50 ms].
+- Przycisk: najechanie przesuwa `.button-inner_content` o 2,25em (36 px), 0,5 s `main`, tylko ≥992 px; tło się nie
+  zmienia (zmiana tła tylko w wariancie `button-white`: → `--primary`, 0,5 s `cubic-bezier(.6,0,0,1)`) [button-hover.js,
+  css-wstrz, pomiar]. `clip-path: inset(0 round .5em); contain: paint` [css-wstrz]. Napis wersalikami (dziedziczy z
+  `.button`), ≤991: `.9rem`, ≤479: `.85rem` [css-wstrz].
+- Etykieta: ≤991 `.eyebrow-s{font-size:.75rem}` [css-wstrz] (12 px przy 375, nie .5em); ≤479 odstęp `.3em` [css-wstrz];
+  napis w czarnym prostokącie biały [css-head]; `.intro` ma `gap:16px` (działa ≤767, gdy flex) [css].
+- Tekst odsłaniany: oryginał dzieli w przeglądarce (SplitType: lines, words, chars), HTML bez podziału; przy zmianie
+  okna revert + split po 200 ms [text-reveal.js]. Krycie średnie wierszy przy górze akapitu na 67,5% ekranu (1440):
+  0,60 / 0,40 / 0,27, znaków w ruchu 25 / 21 / 13 [pomiar, sekcja 02].
