@@ -1,1 +1,96 @@
-/* 01-hero */
+/* 01-hero: plansza ładowania + hero. Liczby z CSS oryginału [css] (cominvi-staging.webflow.shared.css) i arkusza
+   wstrzykiwanego przez main.js [css-wstrz] (wygrywa z Webflow); ruch w js/01-hero.js.
+   Warstwy: .loader z 999 (nad nawigacją 998), ramka .loader-logo_outline nad wszystkim (JS); w hero: tło z 0
+   (film wejścia i płótno sekwencji z 3, przyciemnienie #02020233 z 4), treść z 1. */
+
+/* ---------- plansza ładowania [css] ---------- */
+.loader { position: fixed; inset: 0; z-index: 999; display: flex; background-color: var(--primary); }
+.loader_inner { position: relative; display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; }
+.loader_mask { width: 50%; height: 50%; }
+.loader-logo_wrap { position: absolute; display: flex; justify-content: flex-start; align-items: center; width: 2.813em; height: fit-content;
+  border-radius: .55em; overflow: hidden; }
+.logo-inner { display: flex; }
+.is-logo-icon { position: relative; flex: none; width: 2.813em; height: 2.625em; border-radius: .5em; }
+.logo-icon { position: absolute; top: 50%; left: 50%; z-index: 1; width: 2em; height: auto; transform: translate(-50%, -50%); }
+.logo-square { position: absolute; top: 50%; left: 50%; z-index: 0; width: 0%; height: 0%; border-radius: .5em; background-color: var(--white);
+  transform: translate(-50%, -50%); }
+.is-logo-text { position: relative; flex: none; width: 7.438em; height: 2.625em; margin-left: -.188em; border: .188em solid var(--white);
+  border-radius: .5em; background-color: var(--primary); opacity: 0; }
+.logo-text { position: absolute; top: 50%; left: 50%; display: block; width: 6.125em; height: 100%; overflow: visible; transform: translate(-50%, -50%); }
+/* napis SKALMIN: Inter Tight 500 jak logo w nawigacji (00), szerokość napisu = szerokość napisu oryginału (98 jedn.) */
+.logo-text text { fill: var(--white); font-family: var(--sans); font-weight: var(--fw-medium); font-size: 22.8px; }
+/* ramka logo dorysowana przez JS na czas planszy [css-wstrz] */
+.loader-logo_outline { position: fixed; left: 0; top: 0; z-index: 4; border-radius: .55em; outline: .188em solid var(--white);
+  outline-offset: -.188em; pointer-events: none; mix-blend-mode: normal; }
+html.no-intro .loader { display: none; }
+/* nawigacja stoi w HTML przed planszą: przy pierwszym malowaniu częściowo wczytanego dokumentu bywała widoczna sama
+   (nagranie 16.10, klatka 145 ms); do startu sekcji schowana, potem leży pod planszą (z 998 < 999) jak w oryginale */
+html:not(.no-intro):not(.sm-ready) .navbar { visibility: hidden; }
+
+/* ---------- hero [css] ---------- */
+.section_hero { position: relative; width: 100%; height: 100vh; padding-left: var(--site-margin); padding-right: var(--site-margin); }
+.hero-content { position: relative; top: 50%; z-index: 1; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto;
+  gap: 1em; place-items: end stretch; width: 100%; transform: translateY(-50%); }
+.hero-content_left { flex: 1; grid-column: span 8; }
+.hero-content_right { flex: 1; grid-column: span 4; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+  padding-bottom: .5em; }
+.hero-content_left .is-h1-span-wrap:first-child, .hero-content_right { margin-bottom: -.5em; }               /* [css-wstrz] */
+.content_right-row { display: flex; gap: .5em; justify-content: flex-start; align-items: flex-start; }
+.section_hero .h1 { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+.section_hero .is-h1-span-wrap { display: block; padding-bottom: .125em; overflow: hidden; }
+.is-h1-span { display: block; color: var(--white); font-size: 3.5em; font-weight: var(--fw-bold); line-height: 110%; opacity: 0; }
+.section_hero .eyebrow-l { color: var(--white); opacity: 0; }
+.hero-bottom { position: absolute; left: var(--site-margin); right: var(--site-margin); bottom: 1.5em; z-index: 1; }
+.hero-bottom_cards { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1em; width: 100%; }
+.hero-bottom_cards-wrapper { grid-column: 9 / 13; display: flex; flex-direction: row; align-items: flex-start; gap: 1em; width: 100%; }
+.section_hero .card { position: relative; display: flex; flex: 1; justify-content: center; align-items: flex-end; height: 9em; padding: .5em;
+  overflow: hidden; border: 1px solid #fff3; border-radius: 4px; opacity: 0; }
+.card_bg { position: absolute; inset: 0; width: 100%; max-width: none; height: 100%; object-fit: cover; }
+.button-sm { position: relative; display: flex; justify-content: flex-start; align-items: center; gap: 3px; width: 100%; height: 1.75em;
+  padding: .25em; overflow: hidden; border-radius: 2px; background-color: var(--white); color: var(--primary); text-transform: uppercase;
+  font-size: .75em; font-weight: var(--fw-bold); }
+.button-sm_inner { position: absolute; display: flex; justify-content: space-between; align-items: center; gap: 4px; width: 100%;
+  transform: translate(.2em); }
+.button-sm_inner-left { display: flex; flex-direction: row; align-items: flex-start; gap: 4px; width: 100%; }
+.button-sm_label { font-family: var(--mono); font-size: .9em; font-weight: 400; letter-spacing: var(--mono-ls); line-height: 1; }
+.button-sm .is-arrow { flex: none; width: .5em; }
+html.no-intro .section_hero .is-h1-span, html.no-intro .section_hero .eyebrow-l, html.no-intro .section_hero .card { opacity: 1; }
+
+/* tło: film wejścia, potem sekwencja klatek na płótnie, nad nimi przyciemnienie [css-wstrz] */
+.hero-background { position: absolute; inset: 0; z-index: 0; display: flex; justify-content: center; align-items: center; overflow: hidden; }
+.background-inner { position: relative; z-index: 2; display: flex; flex: 0 0 auto; justify-content: center; align-items: center;
+  width: 100%; height: 100%; }
+.background_video { position: relative; width: 100%; height: 100%; overflow: hidden; }
+.hero-intro, .hero-seq { position: absolute; inset: 0; z-index: 3; display: block; width: 100%; height: 100%; max-width: none; margin: 0;
+  object-fit: cover; object-position: 50% 50%; pointer-events: none; opacity: 0; visibility: hidden; }
+.hero-dim { position: absolute; inset: 0; z-index: 4; background-color: #02020233; pointer-events: none; }
+
+/* ---------- progi [css] ---------- */
+@media screen and (max-width: 991px) {
+  .section_hero { height: 100svh; }
+  .hero-content { grid-template-columns: repeat(8, 1fr); }
+  .hero-content_left, .hero-content_right { grid-column: span 4; }
+  .hero-content_right { padding-bottom: .25em; }
+  .hero-bottom { bottom: 1em; }
+  .section_hero .card { height: 7em; transition: none !important; }                                         /* [css-wstrz] */
+  .button-sm_inner { transform: translate(-.7em); }
+  .hero-bottom_cards { grid-template-columns: repeat(8, 1fr); }
+  .hero-bottom_cards-wrapper { grid-column: 5 / 9; gap: .5em; overflow: hidden; }                          /* [css-wstrz] */
+  .is-h1-span { font-size: 2em; }
+}
+@media screen and (max-width: 767px) {
+  .section_hero { display: flex; flex-direction: column; gap: 1em; height: 100dvh; min-height: 100dvh; padding: 14.5em 1em 1em; } /* [css-wstrz] */
+  .hero-content { display: flex; flex-direction: column; flex: 1; place-items: start stretch; width: auto; height: 100%; top: 0; left: 0;
+    right: 0; transform: translate(0); }
+  .hero-content_left { grid-column: span 6; }
+  .hero-content_right { flex: 0 auto; }
+  .hero-bottom { position: relative; inset: 0; }
+  .section_hero .card { height: 9em; }
+  .hero-bottom_cards { grid-template-columns: repeat(4, 1fr); }
+  .hero-bottom_cards-wrapper { grid-column: 1 / 5; }
+}
+@media screen and (max-width: 479px) {
+  .section_hero { min-height: 100dvh; padding-top: 14.5em; }
+  .section_hero .card { height: 6.5em; }
+  .hero-background { height: 100%; }
+}

@@ -57,6 +57,69 @@
 <!-- /S:00-wspolne -->
 <main class="content-wrap">
 <!-- S:01-hero -->
+<script>/* ?intro=0: bez planszy od pierwszej klatki (base.js ustawia to samo dopiero na końcu strony) */
+if (/[?&]intro=0(&|$)/.test(location.search)) document.documentElement.classList.add('no-intro');</script>
+<div class="loader" aria-hidden="true">
+<div class="loader_inner">
+<div class="loader_mask"></div>
+<div class="loader-logo_wrap">
+<div class="logo-inner">
+<div class="is-logo-icon">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4.9 3.85 18.7 19.3" fill="none" class="logo-icon"><path fill="var(--primary)" d="M14.25 4.2L19.5 14.3H9ZM8.07 16.1H20.43L23.6 22.2H4.9Z"/></svg>
+<div class="logo-square"></div>
+</div>
+<div class="is-logo-text">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 98 18" fill="none" class="logo-text"><text x="0" y="17.3">S</text><text x="14.07" y="17.3">K</text><text x="28.6" y="17.3">A</text><text x="43.95" y="17.3">L</text><text x="56.2" y="17.3">M</text><text x="76.1" y="17.3">I</text><text x="81.6" y="17.3">N</text></svg>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section bg="hero" class="section_hero" aria-label="SkalMin: górnictwo podziemne">
+<div class="hero-content">
+<div class="hero-content_left">
+<h1 class="h1">
+<span class="is-h1-span-wrap"><span class="is-h1-span">Twój zaufany partner</span></span>
+<span class="is-h1-span-wrap"><span class="is-h1-span">w robotach górniczych</span></span>
+</h1>
+</div>
+<div class="hero-content_right">
+<div class="content_right-row"><div class="is-h1-span-wrap"><span class="eyebrow-l">Przez lata</span></div></div>
+<div class="content_right-row"><div class="is-h1-span-wrap"><span class="eyebrow-l">+ 1.000.000 metrów bieżących</span></div></div>
+</div>
+</div>
+<div class="hero-bottom">
+<div class="hero-bottom_cards">
+<div class="hero-bottom_cards-wrapper">
+<a href="#uslugi" class="card">
+<img src="img/hero-karta-1.webp" width="900" height="600" alt="Czterech górników w kaskach przy lampach w ciemnym chodniku" class="card_bg">
+<span class="button-sm"><span class="button-sm_inner"><span class="button-sm_inner-left">
+<svg viewBox="0 0 6 11" fill="none" class="is-arrow is-right" aria-hidden="true"><path d="M0.343262 1.60947C0.343262 1.01554 1.06136 0.718095 1.48133 1.13807L5.52871 5.18545C5.78906 5.4458 5.78906 5.86791 5.52871 6.12826L1.48133 10.1756C1.06136 10.5956 0.343262 10.2982 0.343262 9.70423V1.60947Z" fill="#151515"/></svg>
+<span class="button-sm_label">Nasze usługi</span></span>
+<svg viewBox="0 0 6 11" fill="none" class="is-arrow" aria-hidden="true"><path d="M0.343262 1.60947C0.343262 1.01554 1.06136 0.718095 1.48133 1.13807L5.52871 5.18545C5.78906 5.4458 5.78906 5.86791 5.52871 6.12826L1.48133 10.1756C1.06136 10.5956 0.343262 10.2982 0.343262 9.70423V1.60947Z" fill="#151515"/></svg>
+</span></span>
+</a>
+<a href="#technologia" class="card">
+<img src="img/hero-karta-2.webp" width="900" height="506" alt="Ładowarka kołowa na placu budowy" class="card_bg">
+<span class="button-sm"><span class="button-sm_inner"><span class="button-sm_inner-left">
+<svg viewBox="0 0 6 11" fill="none" class="is-arrow is-right" aria-hidden="true"><path d="M0.343262 1.60947C0.343262 1.01554 1.06136 0.718095 1.48133 1.13807L5.52871 5.18545C5.78906 5.4458 5.78906 5.86791 5.52871 6.12826L1.48133 10.1756C1.06136 10.5956 0.343262 10.2982 0.343262 9.70423V1.60947Z" fill="#151515"/></svg>
+<span class="button-sm_label">Technologia</span></span>
+<svg viewBox="0 0 6 11" fill="none" class="is-arrow" aria-hidden="true"><path d="M0.343262 1.60947C0.343262 1.01554 1.06136 0.718095 1.48133 1.13807L5.52871 5.18545C5.78906 5.4458 5.78906 5.86791 5.52871 6.12826L1.48133 10.1756C1.06136 10.5956 0.343262 10.2982 0.343262 9.70423V1.60947Z" fill="#151515"/></svg>
+</span></span>
+</a>
+</div>
+</div>
+</div>
+<div class="hero-background" aria-hidden="true">
+<div class="background-inner">
+<div class="background_video">
+<video class="hero-intro" muted playsinline preload="auto" disablepictureinpicture></video>
+<canvas class="hero-seq"></canvas>
+<div class="hero-dim"></div>
+</div>
+</div>
+</div>
+</section>
 <!-- /S:01-hero -->
 <!-- S:02-onas -->
 <!-- /S:02-onas -->

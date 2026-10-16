@@ -63,3 +63,21 @@ przypięte albo przesuwa się wolniej (p0.75 w `sekcje_1440x900.jpg`: hero wida�
 B1, B2 (sekwencja: numer klatki w 6 punktach postępu w dół i w górę, nasza = oryginał), B4 (klatki 0 / 0,5 / 1 / 2 /
 3 s od pierwszej zmiany obok oryginału, dwa przebiegi), B6 (kadr filmu i kart), B7. Liczby: czas planszy do odsłony,
 czas i kaskada H1, położenie H1 i kart (vw), postęp sekwencji przy 50% przewinięcia.
+
+## Pomiar 16.10 (podagent 01; żywa strona, zapis co klatkę rAF, 1440×900 i 375×812)
+- Wariant planszy na stronie głównej: `_p()` (main.js w. 13101: namespace „home” → `_p()`; `Ep()` tylko na podstronach,
+  `Tp()` po przejściu Barba) [kod].
+- Plansza czeka na gotowość mediów (film wejścia + partie 0–1 klatek) albo 1,5 s od startu skryptu; w pomiarze
+  oryginału zawsze 1,5 s (logo rusza 2,2 s po pierwszej ciemnej klatce) [pomiar]. Od startu logo: kwadrat i znak 0,8 s,
+  ramka na napis 0,8 s (litery z dołu, kaskada .02), zwężenie 0,3 s, odsłona 1,8 s [kod]; względem początku odsłony:
+  kwadrat pełny −1450 ms, napis −1130, ramka pełna −566, ruch H1 +17, karty +500, koniec H1 +1034 / +1067, koniec kart
+  +1601, płótno i `loader:done` +1824 [pomiar].
+- Nawigacja **nie jedzie** przy wejściu: `left` 32 px (375: 15 px) przez całe wejście; `ci()` dodaje tween do `2em`,
+  ale pasek już tam jest [pomiar, kod w. 5826].
+- Film wejścia: tempo 2 (3,6 s w 1,8 s), od `currentTime` 0 do 3,58 [pomiar]; potem płótno z klatką 0.
+- Sekwencja: klatka = round(min(przewinięcie / wysokość okna, 1) × (n − 1)), bez opóźnienia (Lenis); 1440: 0 / 15 / 37 /
+  75 / 112 / 134 / 149 przy 0 / .1 / .25 / .5 / .75 / .9 / 1 ekranu, w górę tak samo; 375 (132 klatki): 0 / 13 / 33 / 66 /
+  98 / 118 / 131 [pomiar]. Hero przewija się 1:1 (bez przypięcia, bez paralaksy: `ca()` tylko w `Ep()`) [pomiar, kod].
+- Średni kolor płótna (przed nakładką #02020233), okno 10% szerokości: 1440 góra 54,71,95 / lewo-dół 17,21,28 / środek
+  85,103,129 / prawo 69,86,109; 375: 59,77,101 / 19,26,40 / 88,108,135 / 86,107,134 [pomiar]. Maszyna: 1440 środek 72% /
+  56% ekranu, 375: 69% / 57% [zrzut].
