@@ -64,7 +64,7 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
 | 04 | minerały | `zlecenia/04-mineraly.md` | przyjęta 18.10 (0 rund) | skały: `narzedzia/skaly.py` + `skaly.html` (wygląd do decyzji Grzegorza) |
 | 05 | bezpieczeństwo | `zlecenia/05-bezpieczenstwo.md` | przyjęta 18.10 (0 rund) | przyklejenie przez `position:sticky` (≥992) |
 | 06 | technologia | `zlecenia/06-technologia.md` | przyjęta 18.10 (0 rund) | skala maszyn `--k` z powierzchni (3 maszyny w innej pozie) |
-| 07 | zespół | `zlecenia/07-zespol.md` | do zrobienia | |
+| 07 | zespół | `zlecenia/07-zespol.md` | przyjęta 18.10 (0 rund) | ikony Icon 01–05 własne w `js/07-zespol.js`; cytaty z `nowrap` (brand.md) |
 | 08 | partnerzy | `zlecenia/08-partnerzy.md` | do zrobienia | |
 | 09 | następna strona | `zlecenia/09-nastepna.md` | do zrobienia | |
 | 10 | stopka | `zlecenia/10-stopka.md` | do zrobienia | |
