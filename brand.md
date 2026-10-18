@@ -139,8 +139,11 @@ wiersze na 1440, rozmiar).
 ### 08 · partnerzy
 - S.07 · Our Partners → S.07 · Nasi partnerzy
 - Leading mining companies trust CoMinVi / to carry out their underground operations with / safety, precision, and
-  proven results. → Wiodące spółki górnicze ufają SkalMin / w prowadzeniu swoich operacji pod ziemią z /
-  bezpieczeństwem, precyzją i pewnymi wynikami.
+  proven results. → Wiodące spółki górnicze ufają SkalMin / w prowadzeniu swoich robót pod ziemią z / bezpieczeństwem,
+  precyzją i dobrym wynikiem. (podagent 08: 1440 5/7/5 słów jak oryginał, 768 6/6/5 jak oryginał; 375: 7 wierszy jak
+  oryginał, ale 2/4/2/4/1/3/1 słów zamiast 2/2/4/2/3/3/1. Spięte: `nowrap-d` „w prowadzeniu” (≥992), `nowrap-m`
+  „górnicze ufają” (≤767), `nowrap` „pod ziemią z”; poprzednia wersja dawała na 1440 4 wiersze, bo „pewnymi wynikami.”
+  było za szerokie)
 - Lista (fikcyjne spółki, ta sama liczba słów): Silver Crest, Trafigura, Agnico Eagle, Aura Mineral Inc., Capstone,
   Coeur Mining, Endeavour silver, Penoles, Fresnillo, First Majestic, Leagold Mining, Magna Gold, Minera Frisco,
   Equinox gold → Srebrna Grań, Rudolux, Borex Sokół, Aurum Kruszec S.A., Kamieniec, Kordyl Mining, Trudnik srebro,
