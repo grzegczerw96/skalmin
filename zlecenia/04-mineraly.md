@@ -48,3 +48,19 @@ Przewijanie kółkiem w dół, w górę i znowu w dół (B2) i skok w środek se
 ## Gotowe, gdy
 B1, B2 (aktywny minerał i kąt koła w 8 punktach postępu w dół i w górę obok oryginału), B6, B7 + liczby: wysokość
 2,70 ekranu, średnica koła (vw), progi zmian minerału (postęp), kąt `--angle` w połowie.
+
+## Pomiar i kod (podagent 04, 18.10)
+- Oś: brak pinu w JS; `.minerals-inner` `position:sticky` w `.minerals-stage` 270vh [css]. ST listy i koła: trigger stage,
+  `top top` → `+=stage−innerHeight`, scrub 1; `--angle` = postęp × 360; aktywny = floor(postęp × 5) → progi 0,2 / 0,4 /
+  0,6 / 0,8 [kod]. Nazwa .15 ↔ 1 0,25 s, symbol/numer y 0,25 s, ≤767 `scrollLeft` 0,3 s, lista yPercent 0 → 120 w
+  ostatnich 10% ekranu osi [kod]. Kąt w połowie: 180° [pomiar 1440 i 375].
+- Skała: jedna sekwencja 600 klatek 720×720 (h264 `.af`, 24 kl./s, GOP 5; zapas: AVIF `minerals-0001…0600.avif`),
+  120 klatek na minerał, cięcie (bez przenikania) przy 120/240/360/480; tło klatki #fcfcfc; bryła w klatce h ≈ 0,80
+  (cynk w 0,64 × h 0,58) [pomiar klatek]. Tween frame 0 → 599 liniowo, stage `top top` → `bottom bottom`, scrub .4;
+  rysowanie contain × 0,85 na białym płótnie [kod]. Slider `.minerals-slider_inner` z kodu nie istnieje w HTML (tylko
+  płótno).
+- Układ 1440 [pomiar]: lista x 32, y 450 od góry ekranu (etykieta), nazwy 48 px co 52; koło 680 (47,2 vw) w kolumnie
+  6/12 (x 380); płótno 680 × 501,6 (60%); winieta 646 (95%); symbol x 1192 na wysokości etykiety listy.
+  375 [pomiar]: kolejność prawa kolumna → koło → lista ([css-head] `col-3:last-of-type{order:1}`, `.col-6{order:2;padding:2em}`),
+  nazwy 3.5em w poziomym pasku, koło 313,5 (100%).
+- Nasze: klatki 544 px WebP (q .66), razem 5,65 MB, `narzedzia/skaly.py` + `skaly.html` (three.js r149, `lib/three.min.js`).

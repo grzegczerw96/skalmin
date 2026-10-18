@@ -1,1 +1,77 @@
-/* 04-mineraly */
+/* 04-mineraly: sekcja „Minerały” (oryginał .section_minerals). Liczby z CSS Webflow oryginału [css], arkusza
+   wstrzykiwanego przez main.js [css-wstrz] (orig/main-wstrzykniety.css: .section_minerals, .minerals-inner>.col-3,
+   sekwencja 60%), stylu w <head> oryginału [css-head] (≤767: kolejność kolumn, .col-6 padding 2em, nazwy 3.5em) i pomiaru
+   żywej strony [pomiar]. Ruch w js/04-mineraly.js (minerals.js, minerals-canvas-local-debug.js).
+   Układ: .minerals-stage 270vh, w nim przyklejony (sticky) ekran .minerals-inner; siatka 12 kolumn: lista | koło | symbol. */
+.section_minerals { position: relative; z-index: 0; display: flex; justify-content: center; align-items: center; width: 100%;
+  background-color: #fff; color-scheme: only light; }                                                     /* [css] [css-wstrz] */
+.section_minerals .minerals-stage { position: relative; display: block; width: 100%; height: 270vh; overflow: visible; }   /* [css] */
+.section_minerals .minerals-inner { position: sticky; top: 0; display: grid; grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto; gap: 1em; width: 100%; height: 100vh;
+  padding: var(--site-margin) var(--site-margin) 2em; }                                                    /* [css] */
+.section_minerals .col-3 { grid-column: span 3; }                                                          /* [css] w-node */
+.section_minerals .col-6 { grid-column: span 6; }
+
+/* lewa kolumna: etykieta u góry, lista od połowy ekranu [css] */
+.section_minerals .minerals_left { position: relative; display: flex; justify-content: flex-start; align-items: flex-start;
+  height: 100%; padding-top: calc(50vh - 2em); }
+.section_minerals .eyebrows.is-top { position: absolute; inset: 0 auto auto 0; margin: 0; }
+.section_minerals .eyebrows.is-top.is-mobile { display: none; }
+.section_minerals .minerals-list { display: flex; flex-direction: column; gap: 1.5em; }
+.section_minerals .eyebrow-wrapper { padding-top: 0; overflow: hidden; }
+/* etykieta listy nie rusza się (minerals.js jej nie animuje): bez przycięcia, bo „Ó” wystaje nad wiersz 1.0 [wierzch.py] */
+.section_minerals .minerals-list .eyebrow-wrapper { overflow: visible; }
+.section_minerals .minerals-names { display: flex; flex-direction: column; gap: .25em; scrollbar-width: none; }
+.section_minerals .minerals-names::-webkit-scrollbar { display: none; }
+.section_minerals .minerals-names .body-xl { color: var(--primary); white-space: nowrap; }
+.section_minerals .minerals-names .is-o-15 { opacity: .15; }                                               /* [css] */
+.section_minerals .minerals-names .is-active { opacity: 1; }
+
+/* koło: dwie warstwy kresek (druga odsłaniana maską conic w JS), sekwencja klatek 60% wysokości, biała winieta [css] */
+.section_minerals .minerals_content { position: relative; display: flex; justify-content: center; align-items: center; height: 100%; }
+.section_minerals .circle { position: absolute; width: 100%; height: auto; pointer-events: none; }
+.section_minerals .circle.is-1 { z-index: 0; opacity: .3; }
+.section_minerals .circle.is-2 { z-index: 1; opacity: 1; }
+.section_minerals .circle.is-1 g { opacity: .3; }                                                  /* [html] g opacity .3 */
+.section_minerals .circle.is-2 g { opacity: 1; }                                                          /* [css-wstrz] */
+.section_minerals .minerals-slider_sequence { display: flex; justify-content: center; align-items: center; width: 100%;
+  height: 60%; max-height: 60%; }                                                                         /* [css-wstrz] */
+.section_minerals .minerals_canvas { display: block; width: 100%; height: 100%; max-width: 100%; max-height: 100%; padding: 0; }
+.section_minerals .minerals-slider_overlay { position: absolute; z-index: 2; width: 95%; aspect-ratio: 1; border-radius: 100%;
+  pointer-events: none; background-image: radial-gradient(circle, #fff0 42%, #fff 69% 70%); }             /* [css] */
+
+/* prawa kolumna: symbol i numer, wyrównane w JS do etykiety listy [css] + minerals.js A() */
+.section_minerals .minerals_right { position: relative; display: flex; flex-direction: column; justify-content: flex-start;
+  align-items: flex-start; height: 100%; padding-left: 7.25em; }
+.section_minerals .eyebrow-wrapper.is-a { position: absolute; top: 50%; display: flex; gap: .25em; }
+.section_minerals .eyebrow-line { display: flex; overflow: hidden; }
+.section_minerals .eyebrow-slider { display: flex; flex-direction: column; height: .75em; will-change: transform; }
+
+@media screen and (max-width: 991px) {
+  .section_minerals .minerals-inner .eyebrows { padding-left: 1em; padding-top: 1em; }                     /* [css-head] */
+}
+@media screen and (max-width: 767px) {
+  .section_minerals .minerals-inner { display: flex; flex-direction: column; justify-content: flex-start; align-items: stretch;
+    gap: 2em; height: 100svh; padding: var(--site-margin) 0 1em; }                                        /* [css] */
+  .section_minerals .eyebrows.is-top.is-d { display: none; }
+  .section_minerals .eyebrows.is-top.is-mobile { display: flex; }
+  .section_minerals .col-3.is-right { order: 1; }                                                     /* [css-head] */
+  .section_minerals .col-6 { order: 2; flex: 1; padding: 2em; }                                            /* [css-head] */
+  .section_minerals .col-3.is-left { order: 3; }                                                       /* [css-wstrz] */
+  .section_minerals .minerals_left { justify-content: flex-start; align-items: flex-end; padding-top: 0; }
+  .section_minerals .minerals_right { justify-content: flex-end; align-items: center; padding-top: 4em; padding-left: 0; }
+  .section_minerals .minerals_content { max-width: 100%; }
+  .section_minerals .circle { width: 85%; }
+  .section_minerals .minerals-list { gap: 1em; width: 100%; overflow: hidden; }
+  .section_minerals .minerals-list .eyebrow-wrapper { padding-left: 1em; }                                 /* [css-head] */
+  .section_minerals .minerals-names { flex-direction: row; gap: 1em; padding: 0 1em; pointer-events: none; }
+  .section_minerals .minerals-names .body-xl { font-size: 3.5em; padding-bottom: .125em; }                /* [css-head] */
+  .section_minerals .eyebrow-wrapper.is-a { position: static; }
+  .section_minerals .eyebrow-line { justify-content: center; align-items: center; }
+  .section_minerals .eyebrow-slider { height: .813em; }
+}
+@media screen and (max-width: 479px) {
+  .section_minerals .eyebrows.is-top.is-mobile { order: -1; top: 1em; left: 1em; padding-left: 0; gap: .3em; }   /* [css] [css-wstrz] */
+  .section_minerals .col-3 { flex: 0 1 auto; }
+  .section_minerals .circle { width: 100%; }
+}

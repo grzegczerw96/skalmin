@@ -1,0 +1,198 @@
+<!doctype html>
+<!-- Skały minerałów (sekcja 04): proceduralna bryła three.js r149 (lib/three.min.js), renderowana do klatek przez
+     narzedzia/skaly.py. window.klatka(m, k, opcje) → dataURL WebP klatki k (0–119) minerału m (0 złoto, 1 srebro,
+     2 ołów, 3 miedź, 4 cynk). Obrót 360° na 120 klatek wokół osi pionowej, tło #fcfcfc jak klatki oryginału [pomiar]. -->
+<meta charset="utf-8">
+<title>skały</title>
+<style>body{margin:0;background:#fcfcfc}canvas{display:block}</style>
+<body>
+<script src="../lib/three.min.js"></script>
+<script>
+(function () {
+  const T = THREE;
+  // ---------- szum 3D (Perlin, ziarno) do kształtu ----------
+  function rng(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+  function perlin(seed) {
+    const r = rng(seed), p = new Uint8Array(512), g = [];
+    const perm = [...Array(256).keys()];
+    for (let i = 255; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [perm[i], perm[j]] = [perm[j], perm[i]]; }
+    for (let i = 0; i < 512; i++) p[i] = perm[i & 255];
+    for (let i = 0; i < 256; i++) { const a = r() * Math.PI * 2, z = r() * 2 - 1, q = Math.sqrt(1 - z * z); g.push([q * Math.cos(a), q * Math.sin(a), z]); }
+    const f = (t) => t * t * t * (t * (t * 6 - 15) + 10);
+    return (x, y, z) => {
+      const X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z); x -= X; y -= Y; z -= Z;
+      const u = f(x), v = f(y), w = f(z);
+      const d = (i, j, k) => { const G = g[p[p[p[(X + i) & 255] + ((Y + j) & 255)] + ((Z + k) & 255)]]; return G[0] * (x - i) + G[1] * (y - j) + G[2] * (z - k); };
+      const L = (a, b, t) => a + (b - a) * t;
+      return L(L(L(d(0, 0, 0), d(1, 0, 0), u), L(d(0, 1, 0), d(1, 1, 0), u), v), L(L(d(0, 0, 1), d(1, 0, 1), u), L(d(0, 1, 1), d(1, 1, 1), u), v), w);
+    };
+  }
+  const fbm = (n, x, y, z, o) => { let s = 0, a = .5, f = 1; for (let i = 0; i < o; i++) { s += a * n(x * f, y * f, z * f); a *= .5; f *= 2.03; } return s; };
+
+  // ---------- minerały: kształt i wygląd [założenie: na oko z klatek oryginału, nie kopia] ----------
+  const MIN = [
+    { nazwa: 'zloto', seed: 11, skala: [.56, 1, .5], amp: .22, freq: 1.2, ciecia: 5, szorstk: .05, cel: 'h', ile: .80, tilt: .12 },
+    { nazwa: 'srebro', seed: 23, skala: [.62, 1, .34], amp: .08, freq: 1.3, ciecia: 6, szorstk: .03, cel: 'h', ile: .78, tilt: .1 },
+    { nazwa: 'olow', seed: 37, skala: [.62, .95, .48], amp: .07, freq: 1.4, ciecia: 7, szorstk: .035, cel: 'h', ile: .80, tilt: .1 },
+    { nazwa: 'miedz', seed: 41, skala: [.74, 1, .56], amp: .2, freq: 1.2, ciecia: 5, szorstk: .05, cel: 'h', ile: .81, tilt: .12 },
+    { nazwa: 'cynk', seed: 53, skala: [1, .78, .72], amp: .07, freq: 1.4, ciecia: 7, szorstk: .04, cel: 'w', ile: .74, tilt: .18 },
+  ];
+
+  function bryla(M) {
+    const geo = new T.IcosahedronGeometry(1, 40);           // nieindeksowana: każda ściana osobno → płaskie ściany
+    const pos = geo.attributes.position, n = perlin(M.seed), n2 = perlin(M.seed + 100), r = rng(M.seed + 7);
+    const cuts = [];
+    for (let i = 0; i < M.ciecia; i++) {
+      const z = r() * 2 - 1, a = r() * Math.PI * 2, q = Math.sqrt(1 - z * z);
+      cuts.push({ n: new T.Vector3(q * Math.cos(a), z * .8, q * Math.sin(a)).normalize(), d: .5 + r() * .25 });
+    }
+    const v = new T.Vector3();
+    for (let i = 0; i < pos.count; i++) {
+      v.fromBufferAttribute(pos, i).normalize();
+      const rad = 1 + M.amp * fbm(n, v.x * M.freq + 3, v.y * M.freq, v.z * M.freq, 4) * 2;
+      v.multiplyScalar(rad);
+      for (const c of cuts) {                              // płaskie przełamy: punkt za płaszczyzną wraca na nią
+        const t = v.dot(c.n) - c.d;
+        if (t > 0) v.addScaledVector(c.n, -t * .94);
+      }
+      const s = M.szorstk * fbm(n2, v.x * 9, v.y * 9, v.z * 9, 3) * 2;   // drobna chropowatość
+      v.multiplyScalar(1 + s);
+      v.set(v.x * M.skala[0], v.y * M.skala[1], v.z * M.skala[2]);
+      pos.setXYZ(i, v.x, v.y, v.z);
+    }
+    geo.computeVertexNormals();
+    geo.computeBoundingBox();
+    const bb = geo.boundingBox, c = new T.Vector3(); bb.getCenter(c);
+    geo.translate(-c.x, -c.y, -c.z);
+    return geo;
+  }
+
+  // ---------- wygląd w shaderze (kolor z położenia w bryle) ----------
+  const GLSL_NOISE = `
+vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}
+vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}
+vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}
+vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+float snoise(vec3 v){
+  const vec2 C=vec2(1.0/6.0,1.0/3.0); const vec4 D=vec4(0.0,0.5,1.0,2.0);
+  vec3 i=floor(v+dot(v,C.yyy)); vec3 x0=v-i+dot(i,C.xxx);
+  vec3 g=step(x0.yzx,x0.xyz); vec3 l=1.0-g; vec3 i1=min(g.xyz,l.zxy); vec3 i2=max(g.xyz,l.zxy);
+  vec3 x1=x0-i1+C.xxx; vec3 x2=x0-i2+C.yyy; vec3 x3=x0-D.yyy;
+  i=mod289(i);
+  vec4 p=permute(permute(permute(i.z+vec4(0.0,i1.z,i2.z,1.0))+i.y+vec4(0.0,i1.y,i2.y,1.0))+i.x+vec4(0.0,i1.x,i2.x,1.0));
+  float n_=0.142857142857; vec3 ns=n_*D.wyz-D.xzx;
+  vec4 j=p-49.0*floor(p*ns.z*ns.z); vec4 x_=floor(j*ns.z); vec4 y_=floor(j-7.0*x_);
+  vec4 x=x_*ns.x+ns.yyyy; vec4 y=y_*ns.x+ns.yyyy; vec4 h=1.0-abs(x)-abs(y);
+  vec4 b0=vec4(x.xy,y.xy); vec4 b1=vec4(x.zw,y.zw);
+  vec4 s0=floor(b0)*2.0+1.0; vec4 s1=floor(b1)*2.0+1.0; vec4 sh=-step(h,vec4(0.0));
+  vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy; vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+  vec3 p0=vec3(a0.xy,h.x); vec3 p1=vec3(a0.zw,h.y); vec3 p2=vec3(a1.xy,h.z); vec3 p3=vec3(a1.zw,h.w);
+  vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));
+  p0*=norm.x; p1*=norm.y; p2*=norm.z; p3*=norm.w;
+  vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0); m=m*m;
+  return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+}
+float fbm3(vec3 p){float s=0.0,a=0.5;for(int i=0;i<5;i++){s+=a*snoise(p);p*=2.03;a*=0.5;}return s;}
+`;
+  // każdy minerał: kolor (kol), szorstkość (rgh), metaliczność (met) z położenia p
+  const WYGLAD = [
+    // złoto: jasnoszara skała z ciemnymi plamami, drobne ziarno i złote drobinki
+    `float b=fbm3(p*1.8); float d=smoothstep(0.02,0.30,fbm3(p*2.6+7.0));
+     float z=snoise(p*38.0); vec3 kol=mix(vec3(0.80,0.80,0.78),vec3(0.93,0.93,0.91),b*0.5+0.5);
+     kol=mix(kol,vec3(0.24,0.24,0.25),d*0.8); kol*=0.86+0.14*z;
+     kol=mix(kol,vec3(0.30,0.30,0.31),smoothstep(0.55,0.75,snoise(p*24.0+3.0))*0.5);
+     float g=smoothstep(0.55,0.75,snoise(p*16.0+11.0))*smoothstep(-0.1,0.3,fbm3(p*3.0+2.0));
+     kol=mix(kol,vec3(0.78,0.55,0.18),g); float rgh=mix(0.85,0.35,g); float met=g*0.8;`,
+    // srebro: biała skała w szare i czarne smugi wzdłuż jednej osi
+    `float w=fbm3(p*vec3(0.5,2.0,0.5)); float t=p.x*2.4+p.z*0.8+w*2.2;
+     float s1=smoothstep(0.86,0.99,abs(sin(t*1.7+snoise(p*3.0)*1.4)));
+     float s2=smoothstep(0.30,0.65,fbm3(vec3(t*1.5,p.y*0.4,0.0)+3.0));
+     vec3 kol=vec3(0.90,0.90,0.88)*(0.92+0.08*snoise(p*30.0));
+     kol=mix(kol,vec3(0.42,0.42,0.41),s2*0.75); kol=mix(kol,vec3(0.20,0.20,0.21),s1*0.8);
+     float rgh=0.75; float met=0.0;`,
+    // ołów (galena): ciemnoszara, lekko połyskliwa, płowe zacieki i pory
+    `float b=fbm3(p*2.2); vec3 kol=mix(vec3(0.30,0.29,0.28),vec3(0.44,0.42,0.40),b*0.5+0.5);
+     float st=smoothstep(0.35,0.60,fbm3(p*vec3(2.0,1.2,2.0)+5.0))*smoothstep(0.2,0.6,snoise(p*9.0+1.0));
+     kol=mix(kol,vec3(0.66,0.54,0.34),st*0.9); kol*=0.88+0.12*snoise(p*34.0);
+     kol=mix(kol,vec3(0.03),smoothstep(0.78,0.92,snoise(p*16.0+9.0)));
+     float rgh=0.42+0.3*st; float met=0.35*(1.0-st);`,
+    // miedź (malachit): zieleń w odcieniach, rdzawobrązowe plamy
+    `float b=fbm3(p*2.4); vec3 kol=mix(vec3(0.05,0.33,0.24),vec3(0.20,0.62,0.46),smoothstep(-0.3,0.4,b));
+     float br=smoothstep(0.05,0.35,fbm3(p*1.7+4.0)); kol=mix(kol,vec3(0.47,0.31,0.24),br*0.85);
+     kol*=0.85+0.15*snoise(p*36.0); kol=mix(kol,vec3(0.12,0.55,0.42),smoothstep(0.6,0.8,snoise(p*14.0))*0.6);
+     float rgh=0.85; float met=0.0;`,
+    // cynk: metaliczny, srebrny, ciemne szczeliny
+    `float b=fbm3(p*2.0); vec3 kol=mix(vec3(0.55,0.55,0.57),vec3(0.80,0.80,0.82),b*0.5+0.5);
+     float dk=smoothstep(0.15,0.45,fbm3(p*3.2+6.0)); kol=mix(kol,vec3(0.20,0.20,0.22),dk*0.75);
+     kol*=0.9+0.1*snoise(p*40.0); float rgh=0.12+0.3*dk; float met=1.0;`,
+  ];
+  function material(i) {
+    const m = new T.MeshStandardMaterial({ color: 0xffffff, roughness: .8, metalness: 0, flatShading: true, envMapIntensity: i === 4 ? 1.3 : .55 });
+    m.customProgramCacheKey = () => 'skala' + i;
+    m.onBeforeCompile = (sh) => {
+      sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vP;')
+        .replace('#include <begin_vertex>', '#include <begin_vertex>\nvP = position;');
+      sh.fragmentShader = sh.fragmentShader.replace('#include <common>', '#include <common>\nvarying vec3 vP;\n' + GLSL_NOISE)
+        .replace('vec4 diffuseColor = vec4( diffuse, opacity );',
+          'vec3 p = vP * 1.6;\n' + WYGLAD[i] + '\nvec4 diffuseColor = vec4( pow(kol, vec3(2.2)), opacity );')   // kolory zapisane w sRGB
+        .replace('#include <metalnessmap_fragment>', '#include <metalnessmap_fragment>\nroughnessFactor = rgh; metalnessFactor = met;');
+    };
+    return m;
+  }
+
+  // ---------- scena ----------
+  const R = 2, S = 544;                                     // renderujemy 2× i zmniejszamy (wygładzanie)
+  const gl = new T.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+  gl.setPixelRatio(1); gl.setSize(S * R, S * R);
+  gl.outputEncoding = T.sRGBEncoding; gl.toneMapping = T.ACESFilmicToneMapping; gl.toneMappingExposure = .95;
+  gl.setClearColor(0xfcfcfc, 1);
+  document.body.appendChild(gl.domElement); gl.domElement.style.width = '320px';
+  const scene = new T.Scene();
+  // otoczenie do odbić (studio: jasna kopuła, ciemniejszy dół, dwa miękkie okna)
+  const env = new T.Scene();
+  const cv = document.createElement('canvas'); cv.width = 64; cv.height = 256;
+  const cx = cv.getContext('2d'); const gr = cx.createLinearGradient(0, 0, 0, 256);
+  gr.addColorStop(0, '#ffffff'); gr.addColorStop(.45, '#d8d8d8'); gr.addColorStop(.55, '#8a8a8a'); gr.addColorStop(1, '#3a3a3a');
+  cx.fillStyle = gr; cx.fillRect(0, 0, 64, 256);
+  const tex = new T.CanvasTexture(cv);
+  env.add(new T.Mesh(new T.SphereGeometry(10, 32, 16), new T.MeshBasicMaterial({ map: tex, side: T.BackSide })));
+  for (const [x, y, z, s] of [[-6, 4, 6, 4], [7, 2, 3, 3], [0, 6, -7, 5]]) {
+    const pl = new T.Mesh(new T.PlaneGeometry(s, s), new T.MeshBasicMaterial({ color: 0xffffff, side: T.DoubleSide }));
+    pl.position.set(x, y, z); pl.lookAt(0, 0, 0); env.add(pl);
+  }
+  const pm = new T.PMREMGenerator(gl); scene.environment = pm.fromScene(env, .04).texture;
+  scene.add(new T.HemisphereLight(0xffffff, 0x777777, .35));
+  const key = new T.DirectionalLight(0xffffff, 1.35); key.position.set(-2.5, 3, 4); scene.add(key);
+  const fill = new T.DirectionalLight(0xffffff, .35); fill.position.set(3, .5, 2); scene.add(fill);
+  const rim = new T.DirectionalLight(0xffffff, .5); rim.position.set(.5, 2, -4); scene.add(rim);
+  const FOV = 20, DIST = 10;
+  const cam = new T.PerspectiveCamera(FOV, 1, .1, 100); cam.position.set(0, 0, DIST); cam.lookAt(0, 0, 0);
+  const visH = 2 * DIST * Math.tan(FOV / 2 * Math.PI / 180);
+
+  const cache = {};
+  function obiekt(i) {
+    if (cache[i]) return cache[i];
+    const M = MIN[i], geo = bryla(M), mesh = new T.Mesh(geo, material(i));
+    // dopasowanie: wysokość (albo szerokość dla cynku) jak bryły oryginału w klatce [pomiar klatek: h .80, cynk w .64]
+    const bb = geo.boundingBox; let rmax = 0; const pa = geo.attributes.position;
+    for (let k = 0; k < pa.count; k++) rmax = Math.max(rmax, Math.hypot(pa.getX(k), pa.getZ(k)));
+    const k = M.cel === 'h' ? (M.ile * visH) / (bb.max.y - bb.min.y) : (M.ile * visH) / (2 * rmax);
+    const g = new T.Group(); mesh.scale.setScalar(k); g.add(mesh); g.rotation.x = M.tilt;
+    cache[i] = { g, mesh }; return cache[i];
+  }
+  const out = document.createElement('canvas'); out.width = out.height = S;
+  const oc = out.getContext('2d');
+  window.klatka = (i, k, opt = {}) => {
+    const { g, mesh } = obiekt(i);
+    scene.children.filter((c) => c.isGroup).forEach((c) => scene.remove(c));
+    scene.add(g);
+    mesh.rotation.y = -k / 120 * Math.PI * 2;
+    gl.render(scene, cam);
+    oc.imageSmoothingQuality = 'high';
+    oc.fillStyle = '#fcfcfc'; oc.fillRect(0, 0, S, S);
+    oc.drawImage(gl.domElement, 0, 0, S, S);
+    return out.toDataURL('image/webp', opt.q || .72);
+  };
+  window.gotowe = true;
+})();
+</script>
