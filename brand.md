@@ -27,7 +27,7 @@ wiersze na 1440, rozmiar).
 - Menu: Our Services / Technology / Safety / About us / Blog / Contact / Join the Team / En / Es →
   Nasze usługi / Technologia / Bezpieczeństwo / O nas / Blog / Kontakt / Dołącz do zespołu / PL / EN
 - Stopka: Explore → Odkryj (Nasze usługi, Technologia, Bezpieczeństwo, O nas, Dołącz do zespołu); Library → Biblioteka
-  (Blog); Legal → Prawne (Informacja o prywatności); Contact → Kontakt (Kontakt, info@skalmin.pl, +48 41 690 4050);
+  (Blog); Legal → Prawne (Nota o prywatności; 16.10, podagent 10: „Informacja o prywatności” zawijała się na 375 do 2 wierszy); Contact → Kontakt (Kontakt, info@skalmin.pl, +48 41 690 4050);
   „2026 CoMinVi - Designed and developed by Holographik®” → „2026 SkalMin - Projekt i wykonanie: studium odtworzenia”
 
 ### 01 · hero

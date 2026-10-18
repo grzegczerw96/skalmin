@@ -1,1 +1,36 @@
-/* 10-stopka */
+/* 10-stopka: stopka (oryginał .footer). Liczby z CSS Webflow [css] i [css-wstrz] (kreska linku: css/00-wspolne.css), kolumny
+   z id #w-node-… oryginału (grid-area span) pod nasze id. Stopka jest zwykłym blokiem po sekcji 09 (nic jej nie przykrywa). */
+.footer { display: flex; flex-flow: column; gap: 12em; padding: var(--site-margin) var(--site-margin) 0; background-color: var(--white); }
+.footer-inner { display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto; grid-auto-columns: 1fr; gap: 1em; }
+.footer_left { grid-column: span 4; display: flex; flex-flow: column; gap: 1.5em; }
+.footer_right { grid-column: span 8; display: flex; justify-content: space-between; gap: 1em; }
+.footer .is-link { display: block; color: var(--primary); }
+.footer .is-logo_main { color: var(--primary); }
+.footer_socials { display: flex; gap: 1em; }
+.footer_social-link { display: flex; justify-content: flex-start; align-items: center; gap: .8em; margin-left: 0; }
+.footer .social-logo { width: 1.5em; }
+.footer .social-bg { color: var(--primary); }
+.footer .social-glyph { color: var(--white); }
+.footer-links_col { display: flex; flex-flow: column; flex: 1; justify-content: flex-start; align-items: flex-start; gap: .75em; }
+.footer-links { display: flex; flex-flow: column; gap: .75em; margin-bottom: 10px; }   /* margin: reguła ul Webflow */
+.footer-link { opacity: .6; font-size: 1em; font-weight: var(--fw-medium); }
+.footer-bottom { display: flex; justify-content: center; align-items: center; padding: 1em 0; border-top: 1px solid #15151580; }
+.footer-p { opacity: .6; font-size: 1em; font-weight: var(--fw-medium); line-height: 1.4; }
+
+@media screen and (max-width: 991px) {
+  .footer { gap: 10em; }
+  .footer-inner { grid-template-columns: repeat(8, 1fr); gap: 2em; width: 100%; }
+  .footer_left { grid-column: span 8; flex-flow: row; justify-content: space-between; width: 100%; }
+  .footer_right { grid-column: span 8; }
+  .footer-bottom { padding: .5em 0; }
+  .footer-p { font-size: .75em; }
+  .footer .is-eyebrow { padding: .25em; }                                            /* pomiar 375: 3,85 px z każdej strony */
+}
+@media screen and (max-width: 767px) {
+  .footer { gap: 6em; }
+  .footer-inner { grid-template-rows: auto auto; grid-auto-flow: row; gap: 6em 1em; }
+  .footer_left { align-items: center; }
+  .footer_right { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; grid-auto-columns: 1fr; gap: 3em 1em; }
+  .footer_right #w-node-stopka-odkryj { grid-area: span 3 / span 1; }
+  .footer-link { height: 1.375em; }
+}
