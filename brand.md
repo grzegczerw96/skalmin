@@ -121,13 +121,17 @@ wiersze na 1440, rozmiar).
 
 ### 07 · zespół
 - S.06 · Our Team → S.06 · Nasz zespół; Our strength is our people → Naszą siłą są nasi ludzie; 01 / 02 bez zmian
-- “I enjoy working at this company because / it has a strong presence and reputation / both locally and nationally. I
-  feel proud to / represent it legally.” / by Juan Erasmo Aguirre Morales → „Lubię pracować w tej firmie, ponieważ ma /
-  silną pozycję i dobrą opinię zarówno w / regionie, jak i w kraju. Jestem dumny, że / mogę ją reprezentować.” /
-  — Marek Antoni Zieliński Kos
-- “Thanks to CoMinVi, I’ve been able to develop my skills and improve my family’s quality of life.” / by Sebastián
-  Caldera Nava → „Dzięki SkalMin mogłem rozwinąć swoje umiejętności i poprawić jakość życia mojej rodziny w ciągu
-  ostatnich kilku lat.” / — Paweł Kaczmarek Wójcik (17 i 4 słowa; podział na wiersze jak oryginał: podagent)
+- Cytat 1 (25 słów; 16.10 podagent 07, zmierzone na oryginale): “I enjoy working at this company because / it has a
+  strong presence and reputation / both locally and nationally. I feel proud to / represent it legally.” / by Juan
+  Erasmo Aguirre Morales → „Lubię tu pracować, bo ta firma ma / mocną markę i świetną renomę w regionie / oraz w
+  całym kraju. Jestem z tego dumny, / że ją reprezentuję.” / — Marek Antoni Zieliński Kos (1440 i 834: 7/7/8/3 słów
+  jak oryginał; 375: 4/5/4/3/4/4/1 zamiast 5/4/4/3/4/4/1, „ta” nie mieści się w 1. wierszu o 4 px; spięte
+  `span.nowrap`: „mocną markę”, „i świetną”, „całym kraju.”, „tego dumny,”, „że ją”; 480–767 inaczej niż oryginał
+  6/6/5/7/1)
+- Cytat 2 (17 słów): “Thanks to CoMinVi, I’ve been able to develop my skills and improve my family’s quality of
+  life.” / by Sebastián Caldera Nava → „Dzięki SkalMin mogę się rozwinąć i już / mam dla rodziny dużo lepsze jutro
+  niż / jeszcze rok temu.” / — Paweł Kaczmarek Wójcik (podagent 07: 1440 i 834: 7/7/3 słów jak oryginał, 375: 4/5/4/4
+  jak oryginał; „mam dla” w `span.nowrap`)
 - Karty: Operation / Quality Processes / Security / Maintenance / Administration & ressources → Operacje / Procesy
   jakości / Ochrona / Serwis / Administracja i zasoby
 - Przycisk: Job offers → Oferty pracy

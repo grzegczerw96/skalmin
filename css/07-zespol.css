@@ -1,1 +1,80 @@
-/* 07-zespol */
+/* 07-zespol: sekcja „Nasz zespół” (oryginał .section_teams). Liczby z CSS Webflow oryginału [css] i arkusza wstrzykiwanego
+   przez main.js [css-wstrz] (orig/main-wstrzykniety.css w. 13, 45, 52, 92, 260); ruch w js/07-zespol.js (testimonials.js,
+   cards-reveal.js, service-icons.js). Siatka kart (.content, .is-grid-3, .services-viewer) jak w 03, bo oryginał używa
+   tych samych klas; własne reguły, bo klasy ogólne dotyczą tylko swojej sekcji. */
+.section_teams { position: relative; display: flex; flex-direction: column; gap: 16em; width: 100%;
+  padding: var(--site-margin) var(--site-margin) 16em; background-color: var(--white); }                    /* [css] */
+.section_teams .content { display: flex; justify-content: space-between; align-items: stretch; gap: 1em; }
+.section_teams .is-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-auto-columns: 1fr; gap: 1em; width: 100%; }
+.section_teams .nowrap { white-space: nowrap; }
+.section_teams .br-d { display: inline; }                  /* „Administracja / i zasoby” w 2 wierszach jak „Administration & / ressources” */
+
+/* siatka 12 kolumn z cytatami: kolumny 3–10 (≤991: 8 kolumn, 2–7; ≤767: 1–8) [css] */
+.section_teams .is-grid-12 { position: relative; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: auto auto; grid-auto-columns: 1fr;
+  gap: 1em; width: 100%; }
+.section_teams .testimonials { grid-area: 1 / 3 / 2 / 11; display: flex; flex-direction: column; justify-content: flex-start;
+  align-items: center; gap: 4em; }
+.section_teams .testimonial { display: none; flex-direction: column; justify-content: flex-start; align-items: center; gap: .5em; }
+.section_teams .testimonial.is-active { display: flex; }
+.section_teams .testimonial-line { display: block; overflow: hidden; padding-bottom: .08em; }      /* [css-wstrz] .08em */
+/* dopisane: ostatnia litera o odstępie ujemnym wychodziła o ~1 px poza wiersz z overflow hidden (wierzch.py); margines ujemny oddaje szerokość */
+.section_teams .testimonial-line { padding-right: .06em; margin-right: -.06em; }
+.section_teams .testimonial-line-inner { display: inline-block; }
+.section_teams .testimonial .word { white-space: nowrap; }
+
+/* przełącznik 01 / 02 [css] */
+.section_teams .toggle { position: relative; display: grid; grid-template-columns: 1fr 1fr; grid-auto-columns: 1fr; gap: .25em;
+  place-items: center; width: 5em; padding: .25em; background-color: var(--primary); border-radius: .5em; }
+.section_teams .toggle-option { position: relative; z-index: 2; display: flex; justify-content: center; align-items: center;
+  width: 2.125em; height: 2.125em; cursor: pointer; }
+.section_teams .toggle-id { color: var(--white); text-transform: uppercase; font-family: var(--mono); font-size: .813em; font-weight: 400;
+  letter-spacing: var(--mono-ls); transition: color .8s cubic-bezier(.5, 0, 0, 1); }                    /* [css-wstrz] .8 s */
+.section_teams .toggle-id.is-active { color: var(--primary); }
+.section_teams .toggle-indicator { position: absolute; top: .25em; left: .25em; width: 2.125em; height: 2.125em;
+  background-color: var(--white); border-radius: .25em; pointer-events: none; will-change: transform; }  /* [css-wstrz] */
+
+/* karta zespołu: jasnozielona, ikona u góry, nazwa u dołu; proporcje 2 / 1,5 [css-wstrz] */
+.section_teams .team-card { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start;
+  aspect-ratio: 2 / 1.5; padding: var(--site-margin); background-color: var(--light-green); border: 0; border-radius: .5em;
+  margin: 0; overflow: hidden; cursor: default; font: inherit; color: var(--primary); text-align: left;
+  -webkit-appearance: none; appearance: none; }
+.section_teams .card-inner { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+  gap: 1.15em; width: 100%; }
+.section_teams .body-l { margin: 0; }
+.section_teams .service-icon { mix-blend-mode: multiply; }
+.section_teams .service-icon_icon { display: block; width: 3.5em; mix-blend-mode: multiply; color: var(--primary); }
+.section_teams .team-card.is-card-reveal-pending { opacity: 0 !important; transform: translateY(2em); pointer-events: none; }  /* [css-wstrz] */
+
+.section_teams .services-viewer { position: relative; display: flex; justify-content: flex-end; align-items: flex-end;
+  border-radius: .5em; overflow: hidden; }
+.section_teams .services-viewer .button { position: relative; z-index: 3; }
+
+@media screen and (max-width: 991px) {
+  .section_teams { gap: 8em; padding-bottom: 8em; }                                                      /* [css] */
+  .section_teams .content { flex-direction: column; }
+  .section_teams .is-grid-12 { grid-template-columns: repeat(8, 1fr); grid-template-rows: auto; }
+  .section_teams .testimonials { grid-column: 2 / 8; gap: 2em; }
+  .section_teams .testimonial.is-active { gap: 1em; }
+  .section_teams .service-icon_icon { width: 2em; }
+  .section_teams .br-d { display: none; }
+}
+@media screen and (max-width: 767px) {
+  .section_teams { gap: 12.25em; padding-bottom: 12.25em; }                                              /* [css] */
+  .section_teams .testimonials { grid-column: 1 / 9; gap: 3em; }
+  .section_teams .testimonial.is-active { gap: 1.25em; }
+  .section_teams .is-grid-3 { grid-template-columns: 1fr; }
+  .section_teams .card-inner { gap: 0; }
+  /* oryginał 375: wiersz siatki z polem przycisku ma 84,6 px = 5,5em przy przycisku 38 px (jak w 03) [pomiar] */
+  .section_teams .services-viewer { min-height: 5.5em; }
+}
+@media screen and (max-width: 479px) {
+  .section_teams { padding-top: 1em; }                                                                   /* [css] */
+  .section_teams .testimonial.is-active { gap: 2em; }
+  .section_teams .service-icon_icon { width: 4em; }
+}
+/* SplitText 3.13 (komponent 00) nie nadaje wierszom display:block i width:100%, jak robiła wersja oryginału przy wyśrodkowanym tekście:
+   bez tego akapit zajmuje całą szerokość bloku zamiast szerokości najdłuższego wiersza */
+.section_teams .testimonial .line { display: block; width: 100%; }
+@media screen and (max-width: 767px) {
+  .section_teams .team-card { gap: 6.75em; }                                                             /* [css] */
+}
