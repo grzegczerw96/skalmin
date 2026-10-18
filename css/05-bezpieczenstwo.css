@@ -1,1 +1,43 @@
-/* 05-bezpieczenstwo */
+/* 05-bezpieczenstwo: sekcja „Polityka bezpieczeństwa” (oryginał .section_safety). Liczby z CSS Webflow [css] i arkusza
+   wstrzykiwanego main.js [css-wstrz]; paralaksa obrazu jak w 02 (main.js nd(), M = 1,2, D = −12 %); przyklejenie
+   tekstu: assets/safety-sticky.js (pin ScrollTrigger) → u nas position: sticky z tym samym początkiem i końcem. */
+.section_safety { position: relative; display: flex; flex-direction: column; gap: 16em; width: 100%;
+  padding: 0 var(--site-margin) 16em; background-color: var(--white); }   /* [css]; padding-top 0: pomiar (kreska .intro.p-top na górze sekcji) */
+.section_safety .content-s { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-columns: 1fr; gap: 1em;
+  justify-content: space-between; align-items: stretch; }                                                    /* [css] */
+.section_safety .content_column { flex: 1; }
+.section_safety .content_column:first-child { grid-area: span 1 / span 6 / span 1 / span 6; }                 /* [css] */
+.section_safety .content_column:last-child { grid-area: 1 / 9 / 2 / 12; }
+
+/* obraz: pudełko 2 / 2,5; w środku obraz 120 % × 120 %, top −12 %, ruch yPercent −10 → 10 w js (jak 02) */
+.section_safety .image-wrapper { position: relative; overflow: hidden; border-radius: .5em; aspect-ratio: 2 / 2.5; }
+.section_safety .image-p { position: absolute; left: 0; right: 0; top: -12%; display: block; width: 120%; max-width: none;
+  height: 120%; object-fit: cover; will-change: transform; }
+
+/* kolumna tekstu: .is-s-wrap (kolumna, 100 % wysokości, odstęp 3em [css] ≤479: 2em [css-wstrz]), .sticky-wrap wypełnia resztę */
+.section_safety .is-s-wrap { display: flex; flex-direction: column; gap: 3em; width: 100%; height: 100%; }
+.section_safety .sticky-wrap { flex: 1; width: 100%; height: 90%; }
+.section_safety .body-m { margin: 0; }
+@media (min-width: 992px) {
+  /* pin: start gdy góra tekstu dojdzie do (okno − wysokość tekstu) / 2, koniec gdy dół .sticky-wrap dotknie dołu tekstu */
+  .section_safety .sticky-wrap .body-m { position: sticky; top: var(--safety-top, 40vh); }
+}
+
+/* łamanie wierszy jak oryginał na 1440 (brand.md 05); na telefonie bez klejenia: 10 wierszy jak oryginał */
+@media (min-width: 768px) { .section_safety .nowrap { white-space: nowrap; } }
+
+@media screen and (max-width: 991px) {
+  .section_safety { gap: 8em; padding-bottom: 8em; }
+  .section_safety .content-s { grid-template-columns: repeat(8, 1fr); }
+  .section_safety .content_column:first-child { grid-column: span 5 / span 5; grid-row: auto; }
+  .section_safety .content_column:last-child { grid-area: auto / 6 / auto / 9; }
+}
+@media screen and (max-width: 767px) {
+  .section_safety { gap: 12em; padding-bottom: 4em; }
+}
+@media screen and (max-width: 479px) {
+  .section_safety .content-s { grid-template-columns: repeat(4, 1fr); }
+  .section_safety .content_column:first-child { grid-column: span 4 / span 4; }
+  .section_safety .content_column:last-child { grid-area: span 1 / span 4 / span 1 / span 4; }
+  .section_safety .is-s-wrap { gap: 2em; }                                                         /* [css-wstrz] */
+}
