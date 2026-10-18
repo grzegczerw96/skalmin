@@ -65,7 +65,7 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
 | 05 | bezpieczeństwo | `zlecenia/05-bezpieczenstwo.md` | przyjęta 18.10 (0 rund) | przyklejenie przez `position:sticky` (≥992) |
 | 06 | technologia | `zlecenia/06-technologia.md` | przyjęta 18.10 (0 rund) | skala maszyn `--k` z powierzchni (3 maszyny w innej pozie) |
 | 07 | zespół | `zlecenia/07-zespol.md` | przyjęta 18.10 (0 rund) | ikony Icon 01–05 własne w `js/07-zespol.js`; cytaty z `nowrap` (brand.md) |
-| 08 | partnerzy | `zlecenia/08-partnerzy.md` | do zrobienia | |
+| 08 | partnerzy | `zlecenia/08-partnerzy.md` | przyjęta 18.10 (0 rund) | przypięcie 2000 px niezależnie od ekranu (jak oryginał) |
 | 09 | następna strona | `zlecenia/09-nastepna.md` | do zrobienia | |
 | 10 | stopka | `zlecenia/10-stopka.md` | do zrobienia | |
 
