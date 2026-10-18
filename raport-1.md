@@ -27,6 +27,13 @@
 - 18.10 Grzegorz: „skały niech zostaną, zdjęcie 02 i 05 też” → skały 04, zdjęcie 02 (postacie małe) i kadr 05
   (ciaśniejszy) bez zmian (zatwierdzone odstępstwa w `CLAUDE.md`).
 
+- 18.10 Grzegorz: nachodzenie sekcji i błędy przy zmianie szerokości zgłaszać mu od razu (lista poniżej, z rozmiarem
+  okna i zrzutem); część może zaliczyć do odstępstw.
+
+## Nachodzenie i szerokości: zgłoszone Grzegorzowi
+| # | Gdzie | Rozmiar okna | Co | Oryginał też? | Decyzja |
+|---|---|---|---|---|---|
+
 ## Propozycje do warsztatu (zbierane w trakcie)
 Odpowiedź Grzegorza 16.10: „tak 1-4, nie zmieniaj procesu, tylko na tę stronę próba” → 1–4 stosowane tylko na cominvi
 jako próba; warsztat (`C:\Projekty\warsztat-nowy`) bez zmian. Po próbie: wyniki (czas, tokeny, co przepuścił tryb lekki)
