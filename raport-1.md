@@ -7,6 +7,7 @@
 | 01 plansza + hero (tryb pełny, high) | 392 tys. (139 narzędzi, 43 min; przerwa na limit API) | 0 | układ = oryginał (H1, etykieta, karty ±0,1 vw na 1440 i 375); obraz filmu jaśniejszy i bardziej kontrastowy niż ciemny render oryginału (pytanie do Grzegorza); karta 2 słoneczna przy ciemnej karcie oryginału. Poprawka na prośbę Grzegorza (+447 tys. tokenów, 11 min): percentyle jasności ≤ oryginał, karta 2 Pexels 3186949 |
 | 02 o nas (lekki, Opus medium) | 259 tys. (89 narzędzi, 23 min) | 0 | pudełka 1440 = oryginał (±0,1 vw), 375 różnice 1–2,6 vw z łamania tekstu; zdjęcie: postacie małe i ciemne przy bliskim, świecącym kadrze oryginału (pytanie do Grzegorza); `ikony.js` przeniesiony do listy skryptów (kierownik) |
 | 03 usługi (lekki, Opus medium) | 279 tys. (112 narzędzi, 22 min) | 0 | pudełka 1440 = oryginał (±0,0 vw), 375 karta 1 niższa o 6 vw (opis 7 wierszy zamiast 8); tytuł karty 2 na 375 3 wiersze → kierownik skrócił („kotwienie wyrobisk”, 2 wiersze). Podagent: `compare.py` przy sekcji wydłużającej stronę daje tysiące pozornych różnic (propozycja do warsztatu) |
+| 04 minerały (lekki + kółko, Opus medium) | 285 tys. (41 narzędzi po wznowieniu; ok. 46 min z przerwą na limit) | 0 | koło, lista, kąt, progi = oryginał (±0,0 vw; nazwy szersze o 1,2 vw z tekstu); skały wyglądają proceduralnie (cętki, malachit) przy realistycznych szarych bryłach oryginału — pytanie do Grzegorza |
 
 ## Decyzje i odstępstwa (na bieżąco)
 - 16.10 Grzegorz: „spróbujmy kolejne wszystkie sekcje A+B” → sekcje 02–10 w trybie lekkim (`zlecenia/_tryb-lekki.md`)
@@ -23,6 +24,7 @@
 - 16.10 Grzegorz („ok” na punkcie kontrolnym): kierunek dobry; film hero przyciemnić i spłaszczyć kontrast, karta 2
   hero na ciemne ciepłe zdjęcie (odesłane podagentowi 01).
 
+- Do decyzji Grzegorza: wygląd skał 04 (proceduralne vs realistyczne szare bryły oryginału).
 - Do decyzji Grzegorza: zdjęcie 02 (postacie małe, daleko) — podmienić na bliższy kadr z czołówkami?
 
 ## Propozycje do warsztatu (zbierane w trakcie)
