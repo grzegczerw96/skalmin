@@ -92,16 +92,31 @@ wiersze na 1440, rozmiar).
 - S.05 · Technology → S.05 · Technologia
 - Our underground fleet features more than / 360 specialized machines across key mining / categories. Every unit is
   selected for durability, / safety, and adaptability in confined, high-stakes / environments. → Nasza flota podziemna
-  liczy łącznie ponad / 360 maszyn specjalnych z kluczowych kategorii / robót. Każdą z nich dobieramy według trwałości, /
-  bezpieczeństwa i pracy w ciasnych, trudnych / warunkach.
-- Over 360 machines → Ponad 360 maszyn; for underground performance → dla wydajności podziemnej; (ukryte) List of our
-  machines → Lista naszych maszyn
+  liczy łącznie ponad / 360 maszyn specjalnych z kluczowych kategorii / robót. Każdą z nich dobieramy dla trwałości, /
+  bezpieczeństwa i pracy w ciasnych, trudnych / warunkach. (16.10, podagent 06: 6/6/7/6/1 słów na 1440 jak oryginał,
+  9 wierszy na 375 jak oryginał; „dla trwałości” zamiast „według”, bo „trwałości,” wisiało samo w wierszu na 375)
+- Over 360 machines → Ponad 360 maszyn (2 wiersze „Ponad 360” / „maszyn” przez `<br>` + `nowrap`: „Ponad 360” jest o 16%
+  szersze niż „Over 360”); for underground performance → dla wydajności podziemnej; (ukryte) List of our machines →
+  Lista naszych maszyn
 - Maszyny: Motor Grader / Telehandler / Compactor / Backhoe Loaders With Baskets / Face-Drilling Rig / Load-Haul-Dump
-  Loader → Równiarka drogowa / Teleładowarka / Walec / Koparkoładowarki z koszem roboczym / Wiertnica czołowa /
-  Ładowarka LHD; OPEN / CLOSE → OTWÓRZ / ZAMKNIJ (opisy maszyn: podagent, zasada wyżej)
+  Loader → Równiarka drogowa / Teleładowarka / Walec / Koparki z koszem roboczym (16.10: „Koparkoładowarki z koszem
+  roboczym” łamały się na 2 wiersze na 375) / Wiertnica czołowa / Ładowarka LHD; OPEN / CLOSE → OTWÓRZ / ZAMKNIJ
+- Opisy maszyn (16.10, podagent 06; słowa w wierszach jak oryginał na 1440, wiersze wymuszone `.line-inner` z
+  `nowrap`, każdy ≤ 380 px z 384): Maszyny do równania i profilowania dróg oraz / ramp, placów roboczych i nasypów pod
+  ziemią / lub nad nią, poprawiając bezpieczeństwo oraz / odwodnienie. (7/7/6/1) · Uniwersalne maszyny z wysuwanym
+  wysięgnikiem / służą do podnoszenia i ustawiania ciężkich części w / ciasnych wyrobiskach. Używane przy montażu i /
+  serwisie oraz zaopatrzeniu załogi pod ziemią. (5/8/6/6) · Walce wibracyjne do zagęszczania luźnego gruntu, /
+  niezbędne przy wykonywaniu górniczych / ramp, placów oraz infrastruktury podziemnej. (6/4/5) · Koparki z
+  podnoszonym koszem roboczym, dające / bezpieczny dostęp do prac serwisowych, montażu / oraz prac budowlanych w
+  ciasnych podziemnych / strefach górniczych. (6/6/6/2) · Wiertnice o napędzie hydraulicznym, z jednym lub / kilkoma
+  wysięgnikami z młotami do skały, służą do / szybkiego wiercenia poziomego przy drążeniu tuneli. / Ich precyzja i
+  wydajność czynią je niezbędnymi / do skutecznego i bezpiecznego prowadzenia / przodków. (7/8/6/7/5/1) ·
+  Niskoprofilowe ładowarki do załadunku, odstawy i / wysypu urobku w ciasnych warunkach pod / ziemią. Ładowarki LHD
+  pozostają kluczowe dla / produkcji dzięki ich zwrotności i dużej zdolności do / odstawy. (6/6/6/8/1)
 - We operate leading brands like Epiroc, / Sandvik, Caterpillar, among others / ensuring maximum uptime and /
-  productivity where it matters most. → Używamy maszyn czołowych marek jak Volnor, / Kartex, Brenna oraz innych, /
-  zapewniając pełną dostępność i / wydajność tam, gdzie najbardziej trzeba.
+  productivity where it matters most. → Pracujemy na sprzęcie marek jak Volnor, / Kartex, Brenna oraz pozostałych, /
+  zapewniając pełną dostępność i / wydajność tam, gdzie to najważniejsze. (6/4/4/5 jak oryginał; „Używamy maszyn
+  czołowych marek jak Volnor,” było o 25% szersze niż w oryginale; akapit ma szerokość 18em jak w oryginale ~17em)
 - Przycisk: Our Fleet → Nasza flota
 
 ### 07 · zespół

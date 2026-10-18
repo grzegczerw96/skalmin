@@ -1,1 +1,112 @@
-/* 06-technologia */
+/* 06-technologia: sekcja „Technologia” (oryginał .section_technology). Liczby z CSS Webflow [css] i arkusza
+   wstrzykiwanego main.js [css-wstrz] (orig/main-wstrzykniety.css w. 31–33, 231–242, 184); ruch w js/06-technologia.js
+   (text-display-reveal.js = SM.tytulDuzy z 00; service-cards.js = karty maszyn). Klasy ogólne tylko w obrębie sekcji. */
+.section_technology { position: relative; display: flex; flex-direction: column; gap: 16em; width: 100%;
+  padding: var(--site-margin) var(--site-margin) 16em; background-color: var(--light-green); }               /* [css] */
+.section_technology .content { display: flex; justify-content: space-between; align-items: stretch; gap: 1em; }
+.section_technology .content_column { flex: 1; }
+.section_technology .w-layout-vflex { display: flex; flex-direction: column; align-items: flex-start; }
+.section_technology .w-layout-hflex { display: flex; flex-direction: row; align-items: flex-start; }
+
+/* wielki napis: .display-text > .title-big (paski gradientu pod maską lighten z tekstem) [css] */
+.section_technology .display-text { position: relative; justify-content: flex-start; align-items: center; gap: 2em; }
+.section_technology .title-big { position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: flex-start;
+  align-items: center; gap: 2em; width: 100%; background-color: var(--light-green); }
+.section_technology .display { display: flex; justify-content: flex-start; align-items: center; height: 12.7em; }
+.section_technology .display.is-test { z-index: 2; width: 32.7em; }
+.section_technology .overlay-gradients { position: absolute; top: 1px; z-index: 1; display: flex; width: 70%; height: 12.6em;
+  gap: 0; background-color: var(--gray); overflow: hidden; }
+.section_technology .overlay-gradient { display: flex; width: 0%; height: 50%; border-radius: 10em; overflow: hidden; }
+.section_technology .gradient-left { flex: 1; height: 100%; background-color: var(--primary); }
+.section_technology .gradient-right { width: 5em; height: 100%; background-image: linear-gradient(270deg, var(--accent), var(--primary)); }
+.section_technology .is-text-mask { position: absolute; top: 0; z-index: 2; display: flex; justify-content: center; align-items: flex-start;
+  width: 100%; height: auto; background-color: var(--light-green); mix-blend-mode: lighten; }
+.section_technology .mask-fill { flex: 0 auto; width: 12em; height: 12.9em; background-color: var(--light-green); }
+.section_technology .is-text-mask > .mask-fill:last-child { margin-left: -1px; }                              /* [css-wstrz] */
+.section_technology .eyebrow-wrapper-a { overflow: hidden; }
+
+/* karty maszyn [css] + [css-wstrz] */
+.section_technology .machines-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto auto;
+  grid-auto-columns: 1fr; gap: 4em 1em; }
+.section_technology .machine-card { display: flex; flex-direction: column; gap: 1em; align-items: stretch; margin: 0; padding: 0;
+  border: 0; background: none; font: inherit; color: var(--primary); text-align: left; cursor: default; -webkit-appearance: none; appearance: none; }
+.section_technology .machine-card_content { position: relative; display: flex; flex-direction: column; aspect-ratio: 179 / 220;
+  padding: 0 2em; border-radius: .5em; background-color: var(--primary); overflow: hidden; }
+.section_technology .machine-card_bg { flex: 1; z-index: 0; width: 100%; height: 100%; min-height: 100%; background-color: var(--primary); }
+.section_technology .machine-card_bg img { width: 100%; max-width: none; height: 100%; object-fit: contain; display: block; transform: scale(var(--k, 1)); }  /* --k: skala maszyny tak, by zajmowała tyle co w oryginale (pomiar bbox) */
+.section_technology .machine-card_inner { position: absolute; bottom: 2em; left: 50%; display: flex; flex-direction: column;
+  justify-content: flex-start; align-items: flex-start; gap: 2em; width: calc(100% - 4em); transform: translate(-50%); }
+.section_technology .machine-card_inner .body-s { margin: 0; }
+.section_technology .body-s.is-g-60 { opacity: .6; color: var(--light-green); }
+.section_technology .machine-bottom-wrap { display: flex; flex-direction: column; align-items: flex-start; }
+.section_technology .machine-card .body-m { margin: 0; }
+.section_technology .machine-desc { display: none; }
+.section_technology .machine-desc .body-s { margin: 0; }
+.section_technology .machine_button-wrap { position: absolute; inset: 1em 0 auto auto; z-index: 3; display: none; flex-direction: column;
+  justify-content: flex-start; align-items: flex-end; height: 1.125em; font-size: 16px; overflow: hidden; }
+.section_technology .machine_button, .section_technology .machines_button { position: relative; display: flex; justify-content: flex-start;
+  align-items: center; gap: .5em; height: 1.125em; padding: .25em; border-radius: .25em; background-color: var(--light-green); font-size: 16px; }
+.section_technology .machines_button.is-close { background-color: var(--primary); color: var(--white); }
+.section_technology .machines_button-label { font-size: .75em; font-weight: var(--fw-bold); line-height: 1; }
+.section_technology .is-plus { width: .625em; }
+.section_technology .machine-card .line { display: block; overflow: hidden; }
+.section_technology .machine-card .line-inner { display: inline-block; transform: translateY(100%); will-change: transform; white-space: nowrap;
+  transition: transform .4s ease; transition-delay: calc((var(--n) - 1 - var(--i)) * .03s); }
+
+.section_technology .text-button { justify-content: flex-start; align-items: center; gap: 6em; padding: 0 10.875em; }
+.section_technology .button-wrap-md { display: flex; justify-content: center; align-items: center; width: 20.75em; }
+
+@media (min-width: 992px) {
+  .section_technology .machine-card_bg { transition: opacity .4s cubic-bezier(.5, 0, 0, 1); }                /* [css-wstrz] */
+  .section_technology .machines-grid:has(.machine-card:hover) .machine-card:not(:hover) .machine-card_bg { opacity: .4; }
+  .section_technology .machine-card:hover .line-inner, .section_technology .machine-card:focus-visible .line-inner {
+    transform: translateY(0); transition-delay: calc(var(--i) * .03s); }
+}
+
+@media screen and (max-width: 991px) {
+  .section_technology { gap: 10em; padding-bottom: 8em; }
+  .section_technology .content { flex-direction: column; }
+  .section_technology .machines-grid { grid-template-columns: 1fr 1fr; row-gap: 2em; }
+  .section_technology .machine-card_inner { bottom: 1em; transform: translate(-57%); }
+  .section_technology .text-button { padding: 0 8em; }
+  .section_technology .display-text { gap: 1.5em; }
+  .section_technology .display.is-test { width: 23.2em; height: 9em; }
+  .section_technology .overlay-gradients { height: 8.9em; }
+  .section_technology .button-wrap-md { width: 24.6em; }
+  .section_technology .machines_label { justify-content: space-between; align-items: center; width: 100%; }
+  .section_technology .machine_button-wrap { position: static; display: flex; }
+  .section_technology .machine_button { background-color: var(--white); justify-content: space-between; }
+  .section_technology .machine-desc { display: block; }
+  .section_technology .machine-bottom-wrap { gap: 1em; height: 1.5em; overflow: hidden; }
+  .section_technology .machine-card { cursor: pointer; }
+  .section_technology .machine-card .line, .section_technology .machine-card .line-inner { display: inline; transform: none;
+    white-space: normal; transition: none; }
+}
+@media screen and (max-width: 767px) {
+  .section_technology { gap: 12em; padding-bottom: 12em; }
+  .section_technology .intro { display: flex; flex-direction: column; }
+  .section_technology .machines-grid { grid-template-columns: 1fr; row-gap: 3em; }
+  .section_technology .machine-card_inner { display: none; left: 1em; transform: translate(0%); }
+  .section_technology .machine-card_bg { height: 100%; }
+  .section_technology .display { height: 7em; }
+  .section_technology .overlay-gradients { width: 100%; height: 7.2em; }
+  .section_technology .is-text-mask { height: 7.3em; }
+  .section_technology .button-wrap-md { width: 100%; }
+  .section_technology .text-button { padding: 0 1em; }                                                         /* [css-wstrz] */
+}
+@media screen and (max-width: 479px) {
+  .section_technology { padding-top: 1em; }
+  .section_technology .machine-card { overflow: hidden; }
+  .section_technology .machine-card_content { justify-content: center; align-items: center; }
+  .section_technology .display.is-test { position: relative; top: -1px; width: 17.8em; height: 7em; }
+  .section_technology .machine_button-wrap { display: block; }
+}
+
+/* uzupełnienia po pomiarze parami */
+.section_technology .machines_label { display: flex; flex-direction: row; align-items: flex-start; }
+.section_technology .body-xxl { width: max-content; white-space: nowrap; }          /* „Ponad 360” szersze o 16 % niż „Over 360”: wiersze z <br> */
+/* oryginał: akapit przed przyciskiem ma szerokość najdłuższego wiersza [pomiar: 819 px = 17,06 em przy 1440; ≤991: 9,17 em] */
+.section_technology .text-button .body-xl { width: 18em; max-width: 100%; }
+@media screen and (max-width: 991px) { .section_technology .text-button .body-xl { width: 10.4em; } }
+/* „wydajności”: akcent nad ś ucinany przez overflow wrappera (oryginał ma tylko wersaliki bez akcentów): zapas u góry bez zmiany układu */
+.section_technology .eyebrow-wrapper-a { padding-top: .3em; margin-top: -.3em; }
