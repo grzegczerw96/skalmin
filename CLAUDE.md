@@ -50,6 +50,8 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
   górnik w kasku). Nawigacja przy wejściu stoi (tak jak żywy oryginał; tween z `ci()` nic nie przesuwa).
 - 18.10.2026 (Grzegorz): skały 04 proceduralne (cętki, malachit) zamiast realistycznych szarych brył; zdjęcie 02 z
   małymi postaciami; kadr 05 ciaśniejszy (głowa w masce zamiast postaci od pasa).
+- 18.10.2026 maszyny 06: teleładowarka, koparkoładowarka i wiertnica w innej pozie (wysięgnik w górę); skala z
+  powierzchni, nie z szerokości; widły teleładowarki sięgają wyżej w karcie.
 - 16.10.2026 jedna strona: bez Barba i podstron; linki menu i przycisków prowadzą do sekcji tej strony albo `#`.
 
 ## Sekcje
@@ -61,7 +63,7 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
 | 03 | usługi | `zlecenia/03-uslugi.md` | przyjęta 16.10 (0 rund; tytuł karty 2 skrócił kierownik) | Lottie oryginału w `orig/lottie/` |
 | 04 | minerały | `zlecenia/04-mineraly.md` | przyjęta 18.10 (0 rund) | skały: `narzedzia/skaly.py` + `skaly.html` (wygląd do decyzji Grzegorza) |
 | 05 | bezpieczeństwo | `zlecenia/05-bezpieczenstwo.md` | przyjęta 18.10 (0 rund) | przyklejenie przez `position:sticky` (≥992) |
-| 06 | technologia | `zlecenia/06-technologia.md` | do zrobienia | |
+| 06 | technologia | `zlecenia/06-technologia.md` | przyjęta 18.10 (0 rund) | skala maszyn `--k` z powierzchni (3 maszyny w innej pozie) |
 | 07 | zespół | `zlecenia/07-zespol.md` | do zrobienia | |
 | 08 | partnerzy | `zlecenia/08-partnerzy.md` | do zrobienia | |
 | 09 | następna strona | `zlecenia/09-nastepna.md` | do zrobienia | |
