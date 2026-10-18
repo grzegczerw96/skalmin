@@ -82,7 +82,11 @@
       if (d > 2) E.to(nav, { duration: .5, left: '-9em', right: '-9em', pointerEvents: 'none', overwrite: 'auto' });
       else if (d < -2) E.to(nav, { duration: .5, left: dm(), right: dm(), overwrite: 'auto' });
     });
-    SM.nav._skok = (y) => { SM.nav._cisza = true; SM.lenis.scrollTo(y, { immediate: true, force: true }); ost = SM.lenis.scroll; SM.nav._cisza = false; };
+    // (18.10, kierownik: na telefonie przy zatrzymanym Lenisie i otwartym menu scrollTo zostawiało okno 1180 px przed celem,
+    //  choć lenis.scroll = cel; dociągnięcie okna)
+    SM.nav._skok = (y) => { SM.nav._cisza = true; SM.lenis.scrollTo(y, { immediate: true, force: true });
+      if (Math.abs(scrollY - y) > 1) scrollTo(0, y);
+      ost = SM.lenis.scroll; SM.nav._cisza = false; };
     addEventListener('resize', () => {
       if (document.documentElement.getAttribute('data-menu-open') === 'true') return;
       const l = parseFloat(getComputedStyle(nav).left);
