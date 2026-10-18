@@ -24,8 +24,8 @@
 - 16.10 Grzegorz („ok” na punkcie kontrolnym): kierunek dobry; film hero przyciemnić i spłaszczyć kontrast, karta 2
   hero na ciemne ciepłe zdjęcie (odesłane podagentowi 01).
 
-- Do decyzji Grzegorza: wygląd skał 04 (proceduralne vs realistyczne szare bryły oryginału).
-- Do decyzji Grzegorza: zdjęcie 02 (postacie małe, daleko) — podmienić na bliższy kadr z czołówkami?
+- 18.10 Grzegorz: „skały niech zostaną, zdjęcie 02 i 05 też” → skały 04, zdjęcie 02 (postacie małe) i kadr 05
+  (ciaśniejszy) bez zmian (zatwierdzone odstępstwa w `CLAUDE.md`).
 
 ## Propozycje do warsztatu (zbierane w trakcie)
 Odpowiedź Grzegorza 16.10: „tak 1-4, nie zmieniaj procesu, tylko na tę stronę próba” → 1–4 stosowane tylko na cominvi

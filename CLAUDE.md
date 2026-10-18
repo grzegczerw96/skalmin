@@ -48,6 +48,8 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
 - 16.10.2026 zdjęcia z Pexels, maszyny wycięte z tła (walec bez kabiny), skały minerałów z własnej bryły 3D.
 - 16.10.2026 hero: postać w filmie większa niż maszyna w oryginale; karta 2 = ładowarka kołowa w słońcu (w oryginale
   górnik w kasku). Nawigacja przy wejściu stoi (tak jak żywy oryginał; tween z `ci()` nic nie przesuwa).
+- 18.10.2026 (Grzegorz): skały 04 proceduralne (cętki, malachit) zamiast realistycznych szarych brył; zdjęcie 02 z
+  małymi postaciami; kadr 05 ciaśniejszy (głowa w masce zamiast postaci od pasa).
 - 16.10.2026 jedna strona: bez Barba i podstron; linki menu i przycisków prowadzą do sekcji tej strony albo `#`.
 
 ## Sekcje
