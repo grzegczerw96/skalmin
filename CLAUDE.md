@@ -66,7 +66,7 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
 | 06 | technologia | `zlecenia/06-technologia.md` | przyjęta 18.10 (0 rund) | skala maszyn `--k` z powierzchni (3 maszyny w innej pozie) |
 | 07 | zespół | `zlecenia/07-zespol.md` | przyjęta 18.10 (0 rund) | ikony Icon 01–05 własne w `js/07-zespol.js`; cytaty z `nowrap` (brand.md) |
 | 08 | partnerzy | `zlecenia/08-partnerzy.md` | przyjęta 18.10 (0 rund) | przypięcie 2000 px niezależnie od ekranu (jak oryginał) |
-| 09 | następna strona | `zlecenia/09-nastepna.md` | do zrobienia | |
-| 10 | stopka | `zlecenia/10-stopka.md` | do zrobienia | |
+| 09 | następna strona | `zlecenia/09-nastepna.md` | przyjęta 18.10 (0 rund) | kliknięcie → `#uslugi` (oryginał: przejście Barba po kliknięciu, opis w raporcie 09) |
+| 10 | stopka | `zlecenia/10-stopka.md` | przyjęta 18.10 (0 rund) | „Nota o prywatności” (2 wiersze na 375 przy „Informacja…”) |
 
 Raport ostatniej sesji: `raport-1.md`.

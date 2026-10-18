@@ -20,6 +20,7 @@ def shots(b, url, tag, w, h, orig):
     pg.goto(url, wait_until='load', timeout=90000); pg.wait_for_timeout(10000 if orig else 3000)
     lim = pg.evaluate('(window.lenis||window.__lenis).limit')
     for y in range(0, int(lim) + h, h): pg.evaluate(GO, y); pg.wait_for_timeout(100)   # leniwe obrazy
+    lim = pg.evaluate('(window.lenis||window.__lenis).limit')   # (po doładowaniu obrazów strona oryginału rośnie)
     top, hh = pg.evaluate(GEO, SEC); res = {'h': round(hh / h, 2), 'p': {}}
     for f in P:
         pg.evaluate(GO, int(max(0, min(lim, top - h + f * (hh + h))))); pg.wait_for_timeout(1500)
