@@ -5,6 +5,6 @@
   "init": "",
   "no_carry": "",
   "shots": {"query": "?intro=0"},
-  "audit": {"clip": ""},
+  "audit": {"clip": "img, video, canvas, figure"},
   "wierzch": {"ignore": ""}
 }
