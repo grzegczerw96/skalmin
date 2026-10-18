@@ -58,7 +58,7 @@ Czyta każda sesja w tym folderze. Proces i wiedza: `C:\Projekty\warsztat-nowy\R
 | 02 | o nas | `zlecenia/02-onas.md` | przyjęta 16.10 (0 rund) | ikony kart: `js/ikony.js` (API na górze; 03 i 07 dopisują swoje) |
 | 03 | usługi | `zlecenia/03-uslugi.md` | przyjęta 16.10 (0 rund; tytuł karty 2 skrócił kierownik) | Lottie oryginału w `orig/lottie/` |
 | 04 | minerały | `zlecenia/04-mineraly.md` | przyjęta 18.10 (0 rund) | skały: `narzedzia/skaly.py` + `skaly.html` (wygląd do decyzji Grzegorza) |
-| 05 | bezpieczeństwo | `zlecenia/05-bezpieczenstwo.md` | do zrobienia | |
+| 05 | bezpieczeństwo | `zlecenia/05-bezpieczenstwo.md` | przyjęta 18.10 (0 rund) | przyklejenie przez `position:sticky` (≥992) |
 | 06 | technologia | `zlecenia/06-technologia.md` | do zrobienia | |
 | 07 | zespół | `zlecenia/07-zespol.md` | do zrobienia | |
 | 08 | partnerzy | `zlecenia/08-partnerzy.md` | do zrobienia | |

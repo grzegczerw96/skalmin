@@ -85,6 +85,8 @@ wiersze na 1440, rozmiar).
 - To this end, we are committed to providing our collaborators with a safe and healthy workplace. → W tym celu dbamy
   o to, by każdy z nas miał bezpieczne i zdrowe miejsce pracy.
 - Przycisk: Read More → Czytaj dalej
+- Łamanie (podagent 05): od 768 px spięte `nowrap`: „by decyzje” w body-xl; „każdy z nas miał bezpieczne” i „i zdrowe”
+  w body-m (1440: 7/5/8/7/7 i 7/5/4 słów jak oryginał; 375: 10 wierszy jak oryginał).
 
 ### 06 · technologia
 - S.05 · Technology → S.05 · Technologia
