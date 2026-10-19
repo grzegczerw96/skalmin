@@ -4,7 +4,14 @@
   "base_url": "https://grzegczerw96.github.io/skalmin/",
   "init": "",
   "no_carry": "",
-  "shots": {"query": "?intro=0"},
-  "audit": {"clip": "img, video, canvas, figure"},
-  "wierzch": {"ignore": ""}
+  "shots": {
+    "query": "?intro=0"
+  },
+  "audit": {
+    "clip": "img, video, canvas, figure"
+  },
+  "wierzch": {
+    "ignore": ""
+  },
+  "orig_url": "https://www.cominvi.com.mx/"
 }
